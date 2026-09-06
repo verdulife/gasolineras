@@ -1,0 +1,31 @@
+    id: radius
+    name: Radius
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    tokens:
+      base: 0.625rem
+      comment: "Base 0.625rem (10px) definida en layout.css como --radius; escala computada en @theme inline."
+      scale:
+        sm: "calc(var(--radius) * 0.6)"
+        md: "calc(var(--radius) * 0.8)"
+        lg: "var(--radius)"
+        xl: "calc(var(--radius) * 1.4)"
+        2xl: "calc(var(--radius) * 1.8)"
+        3xl: "calc(var(--radius) * 2.2)"
+        4xl: "calc(var(--radius) * 2.6)"
+      semantic:
+        radius-control: 0.625rem
+        radius-card: 1rem
+        radius-pill: 9999px
+      component:
+        button: 0.625rem
+        input: 0.625rem
+        card: 1rem
+        dialog: 1rem
+    approval:
+      decision_id: DEC-0005
+      date: 2025-01-27
+      approved_by: user

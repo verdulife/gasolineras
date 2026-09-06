@@ -1,0 +1,66 @@
+    id: colors
+    name: Colors
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    source:
+      type: baseline
+      id: colors
+      path: baseline/foundations/colors.yaml
+    tokens:
+      format: oklch
+      system:
+        comment: "Paleta base heredada de shadcn-svelte estilo vega (base neutral). Definida en src/routes/layout.css."
+        background:
+          light: "oklch(1 0 0)"
+          dark: "oklch(0.145 0 0)"
+        foreground:
+          light: "oklch(0.145 0 0)"
+          dark: "oklch(0.985 0 0)"
+        primary:
+          light: "oklch(0.205 0 0)"
+          dark: "oklch(0.922 0 0)"
+        primary-foreground:
+          light: "oklch(0.985 0 0)"
+          dark: "oklch(0.205 0 0)"
+        secondary:
+          light: "oklch(0.97 0 0)"
+          dark: "oklch(0.269 0 0)"
+        muted:
+          light: "oklch(0.97 0 0)"
+          dark: "oklch(0.269 0 0)"
+        muted-foreground:
+          light: "oklch(0.556 0 0)"
+          dark: "oklch(0.708 0 0)"
+        accent:
+          light: "oklch(0.97 0 0)"
+          dark: "oklch(0.269 0 0)"
+        destructive:
+          light: "oklch(0.577 0.245 27.325)"
+          dark: "oklch(0.704 0.191 22.216)"
+        border:
+          light: "oklch(0.922 0 0)"
+          dark: "oklch(1 0 0 / 10%)"
+        input:
+          light: "oklch(0.922 0 0)"
+          dark: "oklch(1 0 0 / 15%)"
+        ring:
+          light: "oklch(0.708 0 0)"
+          dark: "oklch(0.556 0 0)"
+      semantic:
+        comment: "Colores funcionales propuestos para datos de precios. Valores provisionales que requieren contraste AA."
+        price-lower:
+          light: "oklch(0.503 0.16 148)"
+          dark: "oklch(0.696 0.17 162)"
+        price-higher:
+          light: "oklch(0.577 0.245 27.325)"
+          dark: "oklch(0.704 0.191 22.216)"
+        price-neutral:
+          light: "oklch(0.556 0 0)"
+          dark: "oklch(0.708 0 0)"
+    approval:
+      decision_id: DEC-0004
+      date: 2025-01-27
+      approved_by: user

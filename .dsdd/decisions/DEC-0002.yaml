@@ -1,0 +1,52 @@
+id: DEC-0002
+type: foundation_change
+status: approved
+context:
+  command: foundation-typography-scale
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: design-system/foundations/typography.yaml
+      kind: design-system-entity
+      detail: typography foundation registered as provisional
+      status: detected
+    - path: src/routes/layout.css
+      kind: styling-config
+      detail: Inter Variable font loaded and applied globally
+      status: detected
+    - path: package.json
+      kind: package-dependency
+      detail: "@fontsource-variable/inter installed"
+      status: detected
+  gaps: []
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: typography
+  foundation_type: foundation
+  change_type: scale_definition
+  tokens_defined:
+    - family.sans
+    - scale.display
+    - scale.heading
+    - scale.subheading
+    - scale.body
+    - scale.caption
+    - numeric.tabular_nums
+impact:
+  creates_provisional_entities: 0
+  updates_existing_entities: 1
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/typography.yaml
+  - .dsdd/decisions/DEC-0002.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

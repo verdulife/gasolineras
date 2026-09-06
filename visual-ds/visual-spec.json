@@ -1,0 +1,2739 @@
+{
+  "id": "visual-ds:project",
+  "version": "0.1",
+  "framework": "framework-neutral",
+  "source": "project-design-system",
+  "conventions": {
+    "framework_neutral": true,
+    "token_policy": "canonical-references-only",
+    "arbitrary_values_allowed": false,
+    "styling": [
+      "tailwind",
+      "css"
+    ],
+    "source_refs": [
+      "design-system/components/button.yaml",
+      "design-system/components/card.yaml",
+      "design-system/components/dialog.yaml",
+      "design-system/components/input.yaml",
+      "design-system/foundations/breakpoints.yaml",
+      "design-system/foundations/colors.yaml",
+      "design-system/foundations/focus.yaml",
+      "design-system/foundations/motion.yaml",
+      "design-system/foundations/radius.yaml",
+      "design-system/foundations/shadows.yaml",
+      "design-system/foundations/spacing.yaml",
+      "design-system/foundations/typography.yaml",
+      "design-system/patterns/authentication.yaml",
+      "design-system/patterns/empty-state.yaml"
+    ]
+  },
+  "foundations": [
+    {
+      "id": "visual-ds:foundation:breakpoints",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "breakpoints",
+        "type": "foundation",
+        "path": "design-system/foundations/breakpoints.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "breakpoints",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:breakpoints.scale.2xl",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.scale.2xl"
+          },
+          "value": "1536px"
+        },
+        {
+          "id": "token:breakpoints.scale.lg",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.scale.lg"
+          },
+          "value": "1024px"
+        },
+        {
+          "id": "token:breakpoints.scale.md",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.scale.md"
+          },
+          "value": "768px"
+        },
+        {
+          "id": "token:breakpoints.scale.sm",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.scale.sm"
+          },
+          "value": "640px"
+        },
+        {
+          "id": "token:breakpoints.scale.xl",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.scale.xl"
+          },
+          "value": "1280px"
+        },
+        {
+          "id": "token:breakpoints.semantic.max-content",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.semantic.max-content"
+          },
+          "value": "lg"
+        },
+        {
+          "id": "token:breakpoints.semantic.primary-layout",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.semantic.primary-layout"
+          },
+          "value": "sm"
+        },
+        {
+          "id": "token:breakpoints.strategy",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/breakpoints.yaml"
+          ],
+          "reference": {
+            "path": "token:breakpoints.strategy"
+          },
+          "value": "Mobile-first; defaults de Tailwind v4."
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/breakpoints.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0008.yaml",
+          "detail": "approved decision DEC-0008 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:colors",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "colors",
+        "type": "foundation",
+        "path": "design-system/foundations/colors.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "colors",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:colors.format",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.format"
+          },
+          "value": "oklch"
+        },
+        {
+          "id": "token:colors.semantic.comment",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.comment"
+          },
+          "value": "Colores funcionales propuestos para datos de precios. Valores provisionales que requieren contraste AA."
+        },
+        {
+          "id": "token:colors.semantic.price-higher.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.price-higher.dark"
+          },
+          "value": "oklch(0.704 0.191 22.216)"
+        },
+        {
+          "id": "token:colors.semantic.price-higher.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.price-higher.light"
+          },
+          "value": "oklch(0.577 0.245 27.325)"
+        },
+        {
+          "id": "token:colors.semantic.price-lower.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.price-lower.dark"
+          },
+          "value": "oklch(0.696 0.17 162)"
+        },
+        {
+          "id": "token:colors.semantic.price-lower.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.price-lower.light"
+          },
+          "value": "oklch(0.503 0.16 148)"
+        },
+        {
+          "id": "token:colors.semantic.price-neutral.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.price-neutral.dark"
+          },
+          "value": "oklch(0.708 0 0)"
+        },
+        {
+          "id": "token:colors.semantic.price-neutral.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.semantic.price-neutral.light"
+          },
+          "value": "oklch(0.556 0 0)"
+        },
+        {
+          "id": "token:colors.system.accent.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.accent.dark"
+          },
+          "value": "oklch(0.269 0 0)"
+        },
+        {
+          "id": "token:colors.system.accent.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.accent.light"
+          },
+          "value": "oklch(0.97 0 0)"
+        },
+        {
+          "id": "token:colors.system.background.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.background.dark"
+          },
+          "value": "oklch(0.145 0 0)"
+        },
+        {
+          "id": "token:colors.system.background.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.background.light"
+          },
+          "value": "oklch(1 0 0)"
+        },
+        {
+          "id": "token:colors.system.border.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.border.dark"
+          },
+          "value": "oklch(1 0 0 / 10%)"
+        },
+        {
+          "id": "token:colors.system.border.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.border.light"
+          },
+          "value": "oklch(0.922 0 0)"
+        },
+        {
+          "id": "token:colors.system.comment",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.comment"
+          },
+          "value": "Paleta base heredada de shadcn-svelte estilo vega (base neutral). Definida en src/routes/layout.css."
+        },
+        {
+          "id": "token:colors.system.destructive.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.destructive.dark"
+          },
+          "value": "oklch(0.704 0.191 22.216)"
+        },
+        {
+          "id": "token:colors.system.destructive.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.destructive.light"
+          },
+          "value": "oklch(0.577 0.245 27.325)"
+        },
+        {
+          "id": "token:colors.system.foreground.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.foreground.dark"
+          },
+          "value": "oklch(0.985 0 0)"
+        },
+        {
+          "id": "token:colors.system.foreground.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.foreground.light"
+          },
+          "value": "oklch(0.145 0 0)"
+        },
+        {
+          "id": "token:colors.system.input.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.input.dark"
+          },
+          "value": "oklch(1 0 0 / 15%)"
+        },
+        {
+          "id": "token:colors.system.input.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.input.light"
+          },
+          "value": "oklch(0.922 0 0)"
+        },
+        {
+          "id": "token:colors.system.muted.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.muted.dark"
+          },
+          "value": "oklch(0.269 0 0)"
+        },
+        {
+          "id": "token:colors.system.muted.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.muted.light"
+          },
+          "value": "oklch(0.97 0 0)"
+        },
+        {
+          "id": "token:colors.system.muted-foreground.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.muted-foreground.dark"
+          },
+          "value": "oklch(0.708 0 0)"
+        },
+        {
+          "id": "token:colors.system.muted-foreground.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.muted-foreground.light"
+          },
+          "value": "oklch(0.556 0 0)"
+        },
+        {
+          "id": "token:colors.system.primary.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.primary.dark"
+          },
+          "value": "oklch(0.922 0 0)"
+        },
+        {
+          "id": "token:colors.system.primary.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.primary.light"
+          },
+          "value": "oklch(0.205 0 0)"
+        },
+        {
+          "id": "token:colors.system.primary-foreground.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.primary-foreground.dark"
+          },
+          "value": "oklch(0.205 0 0)"
+        },
+        {
+          "id": "token:colors.system.primary-foreground.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.primary-foreground.light"
+          },
+          "value": "oklch(0.985 0 0)"
+        },
+        {
+          "id": "token:colors.system.ring.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.ring.dark"
+          },
+          "value": "oklch(0.556 0 0)"
+        },
+        {
+          "id": "token:colors.system.ring.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.ring.light"
+          },
+          "value": "oklch(0.708 0 0)"
+        },
+        {
+          "id": "token:colors.system.secondary.dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.secondary.dark"
+          },
+          "value": "oklch(0.269 0 0)"
+        },
+        {
+          "id": "token:colors.system.secondary.light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/colors.yaml"
+          ],
+          "reference": {
+            "path": "token:colors.system.secondary.light"
+          },
+          "value": "oklch(0.97 0 0)"
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/colors.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/foundations/colors.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0004.yaml",
+          "detail": "approved decision DEC-0004 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:focus",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "focus",
+        "type": "foundation",
+        "path": "design-system/foundations/focus.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "focus",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:focus.base.color-dark",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.base.color-dark"
+          },
+          "value": "var(--ring)"
+        },
+        {
+          "id": "token:focus.base.color-light",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.base.color-light"
+          },
+          "value": "var(--ring)"
+        },
+        {
+          "id": "token:focus.base.comment",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.base.comment"
+          },
+          "value": "Definido en layout.css @layer base: outline-ring/50 en todos los elementos."
+        },
+        {
+          "id": "token:focus.contrast.pending",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.contrast.pending"
+          },
+          "value": "Verificar contraste de ring contra foreground/background según WCAG 2.1 AA."
+        },
+        {
+          "id": "token:focus.ring.offset",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.ring.offset"
+          },
+          "value": "2px"
+        },
+        {
+          "id": "token:focus.ring.width",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.ring.width"
+          },
+          "value": "2px"
+        },
+        {
+          "id": "token:focus.visibility.comment",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.visibility.comment"
+          },
+          "value": "Usar :focus-visible para mostrar anillo solo en navegacion por teclado, no en click."
+        },
+        {
+          "id": "token:focus.visibility.focus-visible-only",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/focus.yaml"
+          ],
+          "reference": {
+            "path": "token:focus.visibility.focus-visible-only"
+          },
+          "value": true
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/focus.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0009.yaml",
+          "detail": "approved decision DEC-0009 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:motion",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "motion",
+        "type": "foundation",
+        "path": "design-system/foundations/motion.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "motion",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:motion.accessibility.comment",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.accessibility.comment"
+          },
+          "value": "Respetar prefers-reduced-motion; deshabilitar transiciones no esenciales."
+        },
+        {
+          "id": "token:motion.accessibility.reduced-motion",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.accessibility.reduced-motion"
+          },
+          "value": true
+        },
+        {
+          "id": "token:motion.durations.duration-base",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.durations.duration-base"
+          },
+          "value": "150ms"
+        },
+        {
+          "id": "token:motion.durations.duration-fast",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.durations.duration-fast"
+          },
+          "value": "100ms"
+        },
+        {
+          "id": "token:motion.durations.duration-slow",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.durations.duration-slow"
+          },
+          "value": "300ms"
+        },
+        {
+          "id": "token:motion.easings.ease-in",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.easings.ease-in"
+          },
+          "value": "cubic-bezier(0.4, 0, 1, 1)"
+        },
+        {
+          "id": "token:motion.easings.ease-out",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.easings.ease-out"
+          },
+          "value": "cubic-bezier(0, 0, 0.2, 1)"
+        },
+        {
+          "id": "token:motion.easings.ease-standard",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.easings.ease-standard"
+          },
+          "value": "cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        {
+          "id": "token:motion.semantic.motion-dialog",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.semantic.motion-dialog"
+          },
+          "value": "300ms"
+        },
+        {
+          "id": "token:motion.semantic.motion-focus",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.semantic.motion-focus"
+          },
+          "value": "100ms"
+        },
+        {
+          "id": "token:motion.semantic.motion-hover",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.semantic.motion-hover"
+          },
+          "value": "100ms"
+        },
+        {
+          "id": "token:motion.semantic.motion-page",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/motion.yaml"
+          ],
+          "reference": {
+            "path": "token:motion.semantic.motion-page"
+          },
+          "value": "300ms"
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/motion.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0007.yaml",
+          "detail": "approved decision DEC-0007 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:radius",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "radius",
+        "type": "foundation",
+        "path": "design-system/foundations/radius.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "radius",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:radius.base",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.base"
+          },
+          "value": "0.625rem"
+        },
+        {
+          "id": "token:radius.comment",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.comment"
+          },
+          "value": "Base 0.625rem (10px) definida en layout.css como --radius; escala computada en @theme inline."
+        },
+        {
+          "id": "token:radius.component.button",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.component.button"
+          },
+          "value": "0.625rem"
+        },
+        {
+          "id": "token:radius.component.card",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.component.card"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:radius.component.dialog",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.component.dialog"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:radius.component.input",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.component.input"
+          },
+          "value": "0.625rem"
+        },
+        {
+          "id": "token:radius.scale.2xl",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.2xl"
+          },
+          "value": "calc(var(--radius) * 1.8)"
+        },
+        {
+          "id": "token:radius.scale.3xl",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.3xl"
+          },
+          "value": "calc(var(--radius) * 2.2)"
+        },
+        {
+          "id": "token:radius.scale.4xl",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.4xl"
+          },
+          "value": "calc(var(--radius) * 2.6)"
+        },
+        {
+          "id": "token:radius.scale.lg",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.lg"
+          },
+          "value": "var(--radius)"
+        },
+        {
+          "id": "token:radius.scale.md",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.md"
+          },
+          "value": "calc(var(--radius) * 0.8)"
+        },
+        {
+          "id": "token:radius.scale.sm",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.sm"
+          },
+          "value": "calc(var(--radius) * 0.6)"
+        },
+        {
+          "id": "token:radius.scale.xl",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.scale.xl"
+          },
+          "value": "calc(var(--radius) * 1.4)"
+        },
+        {
+          "id": "token:radius.semantic.radius-card",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.semantic.radius-card"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:radius.semantic.radius-control",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.semantic.radius-control"
+          },
+          "value": "0.625rem"
+        },
+        {
+          "id": "token:radius.semantic.radius-pill",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/radius.yaml"
+          ],
+          "reference": {
+            "path": "token:radius.semantic.radius-pill"
+          },
+          "value": "9999px"
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/radius.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0005.yaml",
+          "detail": "approved decision DEC-0005 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:shadows",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "shadows",
+        "type": "foundation",
+        "path": "design-system/foundations/shadows.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "shadows",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:shadows.dark-mode-note",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.dark-mode-note"
+          },
+          "value": "En dark mode, sombras de baja opacidad y mayor difusion para evitar halos."
+        },
+        {
+          "id": "token:shadows.scale.shadow-lg",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.scale.shadow-lg"
+          },
+          "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "id": "token:shadows.scale.shadow-md",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.scale.shadow-md"
+          },
+          "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "id": "token:shadows.scale.shadow-sm",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.scale.shadow-sm"
+          },
+          "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
+        },
+        {
+          "id": "token:shadows.scale.shadow-xs",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.scale.shadow-xs"
+          },
+          "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+        },
+        {
+          "id": "token:shadows.semantic.shadow-card",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.semantic.shadow-card"
+          },
+          "value": "var(--shadow-sm)"
+        },
+        {
+          "id": "token:shadows.semantic.shadow-dialog",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.semantic.shadow-dialog"
+          },
+          "value": "var(--shadow-lg)"
+        },
+        {
+          "id": "token:shadows.strategy",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/shadows.yaml"
+          ],
+          "reference": {
+            "path": "token:shadows.strategy"
+          },
+          "value": "Elevacion sutil; bordes preferidos sobre sombras para mantener minimalismo."
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/shadows.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0006.yaml",
+          "detail": "approved decision DEC-0006 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:spacing",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "spacing",
+        "type": "foundation",
+        "path": "design-system/foundations/spacing.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "spacing",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:spacing.component.button-padding",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.component.button-padding"
+          },
+          "value": "0.5rem 1rem"
+        },
+        {
+          "id": "token:spacing.component.card-padding",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.component.card-padding"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:spacing.component.input-padding",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.component.input-padding"
+          },
+          "value": "0.5rem 0.75rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-1",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-1"
+          },
+          "value": "0.25rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-12",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-12"
+          },
+          "value": "3rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-16",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-16"
+          },
+          "value": "4rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-2",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-2"
+          },
+          "value": "0.5rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-3",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-3"
+          },
+          "value": "0.75rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-4",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-4"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-6",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-6"
+          },
+          "value": "1.5rem"
+        },
+        {
+          "id": "token:spacing.scale.spacing-8",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale.spacing-8"
+          },
+          "value": "2rem"
+        },
+        {
+          "id": "token:spacing.scale-base",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.scale-base"
+          },
+          "value": "4px"
+        },
+        {
+          "id": "token:spacing.semantic.space-card-gap",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.semantic.space-card-gap"
+          },
+          "value": "0.75rem"
+        },
+        {
+          "id": "token:spacing.semantic.space-card-padding",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.semantic.space-card-padding"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:spacing.semantic.space-inline",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.semantic.space-inline"
+          },
+          "value": "0.5rem"
+        },
+        {
+          "id": "token:spacing.semantic.space-page",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.semantic.space-page"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:spacing.semantic.space-section",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.semantic.space-section"
+          },
+          "value": "1.5rem"
+        },
+        {
+          "id": "token:spacing.semantic.space-stack",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/spacing.yaml"
+          ],
+          "reference": {
+            "path": "token:spacing.semantic.space-stack"
+          },
+          "value": "0.75rem"
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/spacing.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/foundations/spacing.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0003.yaml",
+          "detail": "approved decision DEC-0003 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "visual-ds:foundation:typography",
+      "kind": "foundation-showcase",
+      "entity": {
+        "id": "typography",
+        "type": "foundation",
+        "path": "design-system/foundations/typography.yaml",
+        "scope": "system",
+        "status": "active",
+        "canonical": true,
+        "maturity": "stable"
+      },
+      "foundation_kind": "typography",
+      "representation": "resolved",
+      "tokens": [
+        {
+          "id": "token:typography.family.sans",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.family.sans"
+          },
+          "value": "'Inter Variable', sans-serif"
+        },
+        {
+          "id": "token:typography.numeric.note",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.numeric.note"
+          },
+          "value": "font-variant-numeric: tabular-nums para alinear digitos de precios"
+        },
+        {
+          "id": "token:typography.numeric.tabular-nums",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.numeric.tabular-nums"
+          },
+          "value": true
+        },
+        {
+          "id": "token:typography.scale.body.letter-spacing",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.body.letter-spacing"
+          },
+          "value": 0
+        },
+        {
+          "id": "token:typography.scale.body.line-height",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.body.line-height"
+          },
+          "value": 1.5
+        },
+        {
+          "id": "token:typography.scale.body.size",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.body.size"
+          },
+          "value": "1rem"
+        },
+        {
+          "id": "token:typography.scale.body.use",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.body.use"
+          },
+          "value": "Texto corrido"
+        },
+        {
+          "id": "token:typography.scale.body.weight",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.body.weight"
+          },
+          "value": 400
+        },
+        {
+          "id": "token:typography.scale.caption.letter-spacing",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.caption.letter-spacing"
+          },
+          "value": "0.01em"
+        },
+        {
+          "id": "token:typography.scale.caption.line-height",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.caption.line-height"
+          },
+          "value": 1.4
+        },
+        {
+          "id": "token:typography.scale.caption.size",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.caption.size"
+          },
+          "value": "0.8125rem"
+        },
+        {
+          "id": "token:typography.scale.caption.use",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.caption.use"
+          },
+          "value": "Metadata, timestamps, distancias"
+        },
+        {
+          "id": "token:typography.scale.caption.weight",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.caption.weight"
+          },
+          "value": 400
+        },
+        {
+          "id": "token:typography.scale.display.letter-spacing",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.display.letter-spacing"
+          },
+          "value": "-0.02em"
+        },
+        {
+          "id": "token:typography.scale.display.line-height",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.display.line-height"
+          },
+          "value": 1.1
+        },
+        {
+          "id": "token:typography.scale.display.size",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.display.size"
+          },
+          "value": "2.25rem"
+        },
+        {
+          "id": "token:typography.scale.display.use",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.display.use"
+          },
+          "value": "Precio grande, hero"
+        },
+        {
+          "id": "token:typography.scale.display.weight",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.display.weight"
+          },
+          "value": 700
+        },
+        {
+          "id": "token:typography.scale.heading.letter-spacing",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.heading.letter-spacing"
+          },
+          "value": "-0.01em"
+        },
+        {
+          "id": "token:typography.scale.heading.line-height",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.heading.line-height"
+          },
+          "value": 1.25
+        },
+        {
+          "id": "token:typography.scale.heading.size",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.heading.size"
+          },
+          "value": "1.5rem"
+        },
+        {
+          "id": "token:typography.scale.heading.use",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.heading.use"
+          },
+          "value": "Titulos de seccion, nombre gasolinera"
+        },
+        {
+          "id": "token:typography.scale.heading.weight",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.heading.weight"
+          },
+          "value": 600
+        },
+        {
+          "id": "token:typography.scale.subheading.letter-spacing",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.subheading.letter-spacing"
+          },
+          "value": 0
+        },
+        {
+          "id": "token:typography.scale.subheading.line-height",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.subheading.line-height"
+          },
+          "value": 1.35
+        },
+        {
+          "id": "token:typography.scale.subheading.size",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.subheading.size"
+          },
+          "value": "1.125rem"
+        },
+        {
+          "id": "token:typography.scale.subheading.use",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.subheading.use"
+          },
+          "value": "Subtitulos, etiquetas, filtros activos"
+        },
+        {
+          "id": "token:typography.scale.subheading.weight",
+          "status": "resolved",
+          "source_refs": [
+            "design-system/foundations/typography.yaml"
+          ],
+          "reference": {
+            "path": "token:typography.scale.subheading.weight"
+          },
+          "value": 500
+        }
+      ],
+      "provenance": [
+        {
+          "path": "design-system/foundations/typography.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/foundations/typography.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0002.yaml",
+          "detail": "approved decision DEC-0002 affects visual representation",
+          "status": "approved"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "visual-ds:component:button",
+      "kind": "component-showcase",
+      "entity": {
+        "id": "button",
+        "type": "component",
+        "path": "design-system/components/button.yaml",
+        "scope": "system",
+        "status": "proposed",
+        "canonical": true,
+        "maturity": "provisional"
+      },
+      "name": "Button",
+      "description": null,
+      "variants": [],
+      "states": [],
+      "sizes": [],
+      "capabilities": {},
+      "tokens_used": [],
+      "provenance": [
+        {
+          "path": "design-system/components/button.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/components/button.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0003.yaml",
+          "detail": "approved decision DEC-0003 affects visual representation",
+          "status": "approved"
+        }
+      ],
+      "examples": [],
+      "render": {
+        "mode": "abstract-reference",
+        "subject_ref": "visual-ds:component:button",
+        "props": {},
+        "slots": [],
+        "token_refs": []
+      },
+      "showcase": {
+        "kind": "component-showcase",
+        "views": []
+      },
+      "representation": "resolved"
+    },
+    {
+      "id": "visual-ds:component:card",
+      "kind": "component-showcase",
+      "entity": {
+        "id": "card",
+        "type": "component",
+        "path": "design-system/components/card.yaml",
+        "scope": "system",
+        "status": "proposed",
+        "canonical": true,
+        "maturity": "provisional"
+      },
+      "name": "Card",
+      "description": null,
+      "variants": [],
+      "states": [],
+      "sizes": [],
+      "capabilities": {},
+      "tokens_used": [],
+      "provenance": [
+        {
+          "path": "design-system/components/card.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/components/card.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0003.yaml",
+          "detail": "approved decision DEC-0003 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0005.yaml",
+          "detail": "approved decision DEC-0005 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0006.yaml",
+          "detail": "approved decision DEC-0006 affects visual representation",
+          "status": "approved"
+        }
+      ],
+      "examples": [],
+      "render": {
+        "mode": "abstract-reference",
+        "subject_ref": "visual-ds:component:card",
+        "props": {},
+        "slots": [],
+        "token_refs": []
+      },
+      "showcase": {
+        "kind": "component-showcase",
+        "views": []
+      },
+      "representation": "resolved"
+    },
+    {
+      "id": "visual-ds:component:dialog",
+      "kind": "component-showcase",
+      "entity": {
+        "id": "dialog",
+        "type": "component",
+        "path": "design-system/components/dialog.yaml",
+        "scope": "system",
+        "status": "proposed",
+        "canonical": true,
+        "maturity": "provisional"
+      },
+      "name": "Dialog",
+      "description": null,
+      "variants": [],
+      "states": [],
+      "sizes": [],
+      "capabilities": {},
+      "tokens_used": [],
+      "provenance": [
+        {
+          "path": "design-system/components/dialog.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/components/dialog.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0006.yaml",
+          "detail": "approved decision DEC-0006 affects visual representation",
+          "status": "approved"
+        }
+      ],
+      "examples": [],
+      "render": {
+        "mode": "abstract-reference",
+        "subject_ref": "visual-ds:component:dialog",
+        "props": {},
+        "slots": [],
+        "token_refs": []
+      },
+      "showcase": {
+        "kind": "component-showcase",
+        "views": []
+      },
+      "representation": "resolved"
+    },
+    {
+      "id": "visual-ds:component:input",
+      "kind": "component-showcase",
+      "entity": {
+        "id": "input",
+        "type": "component",
+        "path": "design-system/components/input.yaml",
+        "scope": "system",
+        "status": "proposed",
+        "canonical": true,
+        "maturity": "provisional"
+      },
+      "name": "Input",
+      "description": null,
+      "variants": [],
+      "states": [],
+      "sizes": [],
+      "capabilities": {},
+      "tokens_used": [],
+      "provenance": [
+        {
+          "path": "design-system/components/input.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/components/input.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0003.yaml",
+          "detail": "approved decision DEC-0003 affects visual representation",
+          "status": "approved"
+        }
+      ],
+      "examples": [],
+      "render": {
+        "mode": "abstract-reference",
+        "subject_ref": "visual-ds:component:input",
+        "props": {},
+        "slots": [],
+        "token_refs": []
+      },
+      "showcase": {
+        "kind": "component-showcase",
+        "views": []
+      },
+      "representation": "resolved"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "visual-ds:pattern:authentication",
+      "kind": "pattern-showcase",
+      "entity": {
+        "id": "authentication",
+        "type": "pattern",
+        "path": "design-system/patterns/authentication.yaml",
+        "scope": "system",
+        "status": "proposed",
+        "canonical": true,
+        "maturity": "provisional"
+      },
+      "description": null,
+      "composition": [],
+      "constraints": [],
+      "examples": [],
+      "provenance": [
+        {
+          "path": "design-system/patterns/authentication.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/patterns/application/authentication.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        }
+      ],
+      "render": {
+        "mode": "composition-reference",
+        "subject_ref": "visual-ds:pattern:authentication",
+        "props": {},
+        "slots": [],
+        "token_refs": []
+      },
+      "showcase": {
+        "kind": "pattern-showcase",
+        "views": []
+      },
+      "representation": "resolved"
+    },
+    {
+      "id": "visual-ds:pattern:empty-state",
+      "kind": "pattern-showcase",
+      "entity": {
+        "id": "empty-state",
+        "type": "pattern",
+        "path": "design-system/patterns/empty-state.yaml",
+        "scope": "system",
+        "status": "proposed",
+        "canonical": true,
+        "maturity": "provisional"
+      },
+      "description": null,
+      "composition": [],
+      "constraints": [],
+      "examples": [],
+      "provenance": [
+        {
+          "path": "design-system/patterns/empty-state.yaml",
+          "detail": "canonical Project Design System entity",
+          "status": "canonical"
+        },
+        {
+          "path": "baseline/patterns/feedback/empty-state.yaml",
+          "detail": "provenance evidence",
+          "status": "canonical"
+        },
+        {
+          "path": ".dsdd/decisions/DEC-0001.yaml",
+          "detail": "approved decision DEC-0001 affects visual representation",
+          "status": "approved"
+        }
+      ],
+      "render": {
+        "mode": "composition-reference",
+        "subject_ref": "visual-ds:pattern:empty-state",
+        "props": {},
+        "slots": [],
+        "token_refs": []
+      },
+      "showcase": {
+        "kind": "pattern-showcase",
+        "views": []
+      },
+      "representation": "resolved"
+    }
+  ],
+  "references": [
+    {
+      "from": "visual-ds:component:button",
+      "to": "visual-ds:component:button",
+      "relationship": "renders"
+    },
+    {
+      "from": "visual-ds:component:card",
+      "to": "visual-ds:component:card",
+      "relationship": "renders"
+    },
+    {
+      "from": "visual-ds:component:dialog",
+      "to": "visual-ds:component:dialog",
+      "relationship": "renders"
+    },
+    {
+      "from": "visual-ds:component:input",
+      "to": "visual-ds:component:input",
+      "relationship": "renders"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.scale.2xl",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.scale.lg",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.scale.md",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.scale.sm",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.scale.xl",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.semantic.max-content",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.semantic.primary-layout",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:breakpoints",
+      "to": "token:breakpoints.strategy",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.format",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.comment",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.price-higher.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.price-higher.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.price-lower.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.price-lower.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.price-neutral.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.semantic.price-neutral.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.accent.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.accent.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.background.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.background.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.border.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.border.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.comment",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.destructive.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.destructive.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.foreground.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.foreground.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.input.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.input.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.muted-foreground.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.muted-foreground.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.muted.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.muted.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.primary-foreground.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.primary-foreground.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.primary.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.primary.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.ring.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.ring.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.secondary.dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:colors",
+      "to": "token:colors.system.secondary.light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.base.color-dark",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.base.color-light",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.base.comment",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.contrast.pending",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.ring.offset",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.ring.width",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.visibility.comment",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:focus",
+      "to": "token:focus.visibility.focus-visible-only",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.accessibility.comment",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.accessibility.reduced-motion",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.durations.duration-base",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.durations.duration-fast",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.durations.duration-slow",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.easings.ease-in",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.easings.ease-out",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.easings.ease-standard",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.semantic.motion-dialog",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.semantic.motion-focus",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.semantic.motion-hover",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:motion",
+      "to": "token:motion.semantic.motion-page",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.base",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.comment",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.component.button",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.component.card",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.component.dialog",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.component.input",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.2xl",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.3xl",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.4xl",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.lg",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.md",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.sm",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.scale.xl",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.semantic.radius-card",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.semantic.radius-control",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:radius",
+      "to": "token:radius.semantic.radius-pill",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.dark-mode-note",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.scale.shadow-lg",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.scale.shadow-md",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.scale.shadow-sm",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.scale.shadow-xs",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.semantic.shadow-card",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.semantic.shadow-dialog",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:shadows",
+      "to": "token:shadows.strategy",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.component.button-padding",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.component.card-padding",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.component.input-padding",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale-base",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-1",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-12",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-16",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-2",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-3",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-4",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-6",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.scale.spacing-8",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.semantic.space-card-gap",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.semantic.space-card-padding",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.semantic.space-inline",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.semantic.space-page",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.semantic.space-section",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:spacing",
+      "to": "token:spacing.semantic.space-stack",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.family.sans",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.numeric.note",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.numeric.tabular-nums",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.body.letter-spacing",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.body.line-height",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.body.size",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.body.use",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.body.weight",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.caption.letter-spacing",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.caption.line-height",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.caption.size",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.caption.use",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.caption.weight",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.display.letter-spacing",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.display.line-height",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.display.size",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.display.use",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.display.weight",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.heading.letter-spacing",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.heading.line-height",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.heading.size",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.heading.use",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.heading.weight",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.subheading.letter-spacing",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.subheading.line-height",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.subheading.size",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.subheading.use",
+      "relationship": "uses-token"
+    },
+    {
+      "from": "visual-ds:foundation:typography",
+      "to": "token:typography.scale.subheading.weight",
+      "relationship": "uses-token"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+id: DEC-0007
+type: foundation_change
+status: approved
+context:
+  command: foundation-motion-new
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: package.json
+      kind: package-dependency
+      detail: tw-animate-css installed
+      status: detected
+    - path: src/routes/layout.css
+      kind: styling-config
+      detail: tw-animate-css imported
+      status: detected
+  gaps:
+    - type: foundation
+      id: motion
+      target: design-system/foundations/motion.yaml
+      reason: motion foundation not present in project Design System
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: motion
+  foundation_type: foundation
+  change_type: new_foundation
+  tokens_defined:
+    - durations.*
+    - easings.*
+    - semantic.*
+    - accessibility.reduced_motion
+  notes:
+    - Nueva foundation; duraciones y easings estandar, reduced-motion soportado.
+impact:
+  creates_provisional_entities: 1
+  updates_existing_entities: 0
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/motion.yaml
+  - .dsdd/decisions/DEC-0007.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

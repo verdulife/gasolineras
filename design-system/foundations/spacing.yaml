@@ -1,0 +1,37 @@
+    id: spacing
+    name: Spacing
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    source:
+      type: baseline
+      id: spacing
+      path: baseline/foundations/spacing.yaml
+    tokens:
+      scale_base: 4px
+      scale:
+        spacing-1: 0.25rem
+        spacing-2: 0.5rem
+        spacing-3: 0.75rem
+        spacing-4: 1rem
+        spacing-6: 1.5rem
+        spacing-8: 2rem
+        spacing-12: 3rem
+        spacing-16: 4rem
+      semantic:
+        space-page: 1rem
+        space-card-padding: 1rem
+        space-card-gap: 0.75rem
+        space-section: 1.5rem
+        space-stack: 0.75rem
+        space-inline: 0.5rem
+      component:
+        button-padding: "0.5rem 1rem"
+        input-padding: "0.5rem 0.75rem"
+        card-padding: 1rem
+    approval:
+      decision_id: DEC-0003
+      date: 2025-01-27
+      approved_by: user

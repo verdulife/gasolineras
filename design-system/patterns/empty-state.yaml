@@ -1,0 +1,11 @@
+id: empty-state
+name: Empty State
+type: pattern
+scope: system
+status: proposed
+maturity: provisional
+canonical: true
+source:
+  type: baseline
+  id: empty-state
+  path: baseline/patterns/feedback/empty-state.yaml

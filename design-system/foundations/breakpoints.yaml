@@ -1,0 +1,25 @@
+    id: breakpoints
+    name: Breakpoints
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    tokens:
+      strategy: "Mobile-first; defaults de Tailwind v4."
+      scale:
+        sm: 640px
+        md: 768px
+        lg: 1024px
+        xl: 1280px
+        2xl: 1536px
+      semantic:
+        primary-layout: sm
+        max-content: lg
+      notes:
+        - "PWA de gasolineras: uso movil primario, disenar primero para <640px."
+        - "Breakpoints por defecto de Tailwind; no personalizados."
+    approval:
+      decision_id: DEC-0008
+      date: 2025-01-27
+      approved_by: user

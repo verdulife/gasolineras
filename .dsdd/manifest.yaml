@@ -1,0 +1,24 @@
+schema: dsdd/v0.1
+project:
+  name: precio-gasolineras
+dsdd:
+  version: "0.1"
+baseline:
+  id: dsdd-baseline
+  version: "0.1"
+state:
+  classification: ESTABLISHED
+stack:
+  framework: null
+  frameworks: []
+  language: null
+  package_manager: npm
+  styling: []
+  component_libraries: []
+  component_library_evidence: []
+paths:
+  config: .dsdd/config.yaml
+  state: .dsdd/state.yaml
+  registry: .dsdd/registry
+  decisions: .dsdd/decisions
+  design_system: design-system

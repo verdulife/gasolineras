@@ -1,0 +1,11 @@
+id: input
+name: Input
+type: component
+scope: system
+status: proposed
+maturity: provisional
+canonical: true
+source:
+  type: baseline
+  id: input
+  path: baseline/components/input.yaml

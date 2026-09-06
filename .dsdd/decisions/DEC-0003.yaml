@@ -1,0 +1,54 @@
+id: DEC-0003
+type: foundation_change
+status: approved
+context:
+  command: foundation-spacing-semantic
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: design-system/foundations/spacing.yaml
+      kind: design-system-entity
+      detail: spacing foundation registered as provisional
+      status: detected
+  gaps: []
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: spacing
+  foundation_type: foundation
+  change_type: semantic_definition
+  tokens_defined:
+    - scale.spacing-1
+    - scale.spacing-2
+    - scale.spacing-3
+    - scale.spacing-4
+    - scale.spacing-6
+    - scale.spacing-8
+    - scale.spacing-12
+    - scale.spacing-16
+    - semantic.space-page
+    - semantic.space-card-padding
+    - semantic.space-card-gap
+    - semantic.space-section
+    - semantic.space-stack
+    - semantic.space-inline
+    - component.button-padding
+    - component.input-padding
+    - component.card-padding
+impact:
+  creates_provisional_entities: 0
+  updates_existing_entities: 1
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/spacing.yaml
+  - .dsdd/decisions/DEC-0003.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

@@ -1,0 +1,45 @@
+id: DEC-0009
+type: foundation_change
+status: approved
+context:
+  command: foundation-focus-document
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: src/routes/layout.css
+      kind: styling-config
+      detail: outline-ring/50 base and --ring token defined
+      status: detected
+  gaps: []
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: focus
+  foundation_type: foundation
+  change_type: documentation
+  tokens_defined:
+    - base.color_light
+    - base.color_dark
+    - visibility.focus_visible_only
+    - ring.width
+    - ring.offset
+  notes:
+    - Base existente en layout.css; se documenta focus-visible, ring
+      width/offset, y se registra contraste pendiente de verificar.
+impact:
+  creates_provisional_entities: 0
+  updates_existing_entities: 1
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/focus.yaml
+  - .dsdd/decisions/DEC-0009.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

@@ -1,0 +1,24 @@
+    id: focus
+    name: Focus
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    tokens:
+      base:
+        comment: "Definido en layout.css @layer base: outline-ring/50 en todos los elementos."
+        color_light: "var(--ring)" # oklch(0.708 0 0)
+        color_dark: "var(--ring)" # oklch(0.556 0 0)
+      visibility:
+        focus_visible_only: true
+        comment: "Usar :focus-visible para mostrar anillo solo en navegacion por teclado, no en click."
+      ring:
+        width: 2px
+        offset: 2px
+      contrast:
+        pending: "Verificar contraste de ring contra foreground/background según WCAG 2.1 AA."
+    approval:
+      decision_id: DEC-0009
+      date: 2025-01-27
+      approved_by: user

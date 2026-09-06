@@ -1,0 +1,32 @@
+    id: motion
+    name: Motion
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    tokens:
+      durations:
+        duration-fast: 100ms
+        duration-base: 150ms
+        duration-slow: 300ms
+      easings:
+        ease-standard: "cubic-bezier(0.4, 0, 0.2, 1)"
+        ease-in: "cubic-bezier(0.4, 0, 1, 1)"
+        ease-out: "cubic-bezier(0, 0, 0.2, 1)"
+      semantic:
+        motion-hover: 100ms
+        motion-focus: 100ms
+        motion-dialog: 300ms
+        motion-page: 300ms
+      principles:
+        - "Microinteracciones (hover/focus): 100-150ms."
+        - "Superficies y dialogs: 300ms."
+        - "Soporte tw-animate-css para keyframes predefinidos."
+      accessibility:
+        reduced_motion: true
+        comment: "Respetar prefers-reduced-motion; deshabilitar transiciones no esenciales."
+    approval:
+      decision_id: DEC-0007
+      date: 2025-01-27
+      approved_by: user

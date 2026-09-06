@@ -1,0 +1,11 @@
+id: authentication
+name: Authentication
+type: pattern
+scope: system
+status: proposed
+maturity: provisional
+canonical: true
+source:
+  type: baseline
+  id: authentication
+  path: baseline/patterns/application/authentication.yaml

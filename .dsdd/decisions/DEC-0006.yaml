@@ -1,0 +1,50 @@
+id: DEC-0006
+type: foundation_change
+status: approved
+context:
+  command: foundation-shadows-new
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: src/routes/layout.css
+      kind: styling-config
+      detail: no custom shadow tokens defined; only Tailwind defaults
+      status: detected
+  gaps:
+    - type: foundation
+      id: shadows
+      target: design-system/foundations/shadows.yaml
+      reason: shadow foundation not present in project Design System
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: shadows
+  foundation_type: foundation
+  change_type: new_foundation
+  tokens_defined:
+    - scale.shadow-xs
+    - scale.shadow-sm
+    - scale.shadow-md
+    - scale.shadow-lg
+    - semantic.shadow-card
+    - semantic.shadow-dialog
+  notes:
+    - Nueva foundation; estrategia de elevacion sutil, bordes preferidos sobre
+      sombras para minimalismo.
+impact:
+  creates_provisional_entities: 1
+  updates_existing_entities: 0
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/shadows.yaml
+  - .dsdd/decisions/DEC-0006.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

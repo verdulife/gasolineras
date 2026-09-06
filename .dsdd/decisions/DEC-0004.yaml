@@ -1,0 +1,48 @@
+id: DEC-0004
+type: foundation_change
+status: approved
+context:
+  command: foundation-colors-semantic
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: design-system/foundations/colors.yaml
+      kind: design-system-entity
+      detail: colors foundation registered as provisional
+      status: detected
+    - path: src/routes/layout.css
+      kind: styling-config
+      detail: base palette already defined in OKLCH shadcn vega neutral
+      status: detected
+  gaps: []
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: colors
+  foundation_type: foundation
+  change_type: semantic_definition
+  tokens_defined:
+    - system.* (inherited from layout.css)
+    - semantic.price-lower
+    - semantic.price-higher
+    - semantic.price-neutral
+  notes:
+    - Base palette confirmed from existing layout.css; no changes to it.
+    - Price semantics are provisional; contrast AA verification pending.
+impact:
+  creates_provisional_entities: 0
+  updates_existing_entities: 1
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/colors.yaml
+  - .dsdd/decisions/DEC-0004.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

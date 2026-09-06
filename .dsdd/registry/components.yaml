@@ -1,0 +1,43 @@
+schema: dsdd/v0.1
+kind: components
+items:
+  - id: button
+    type: component
+    scope: system
+    status: proposed
+    maturity: provisional
+    canonical: true
+    source:
+      type: baseline
+      id: button
+      path: baseline/components/button.yaml
+  - id: input
+    type: component
+    scope: system
+    status: proposed
+    maturity: provisional
+    canonical: true
+    source:
+      type: baseline
+      id: input
+      path: baseline/components/input.yaml
+  - id: card
+    type: component
+    scope: system
+    status: proposed
+    maturity: provisional
+    canonical: true
+    source:
+      type: baseline
+      id: card
+      path: baseline/components/card.yaml
+  - id: dialog
+    type: component
+    scope: system
+    status: proposed
+    maturity: provisional
+    canonical: true
+    source:
+      type: baseline
+      id: dialog
+      path: baseline/components/dialog.yaml

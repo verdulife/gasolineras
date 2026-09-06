@@ -1,0 +1,11 @@
+id: button
+name: Button
+type: component
+scope: system
+status: proposed
+maturity: provisional
+canonical: true
+source:
+  type: baseline
+  id: button
+  path: baseline/components/button.yaml

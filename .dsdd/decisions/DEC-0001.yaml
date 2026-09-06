@@ -1,0 +1,246 @@
+id: DEC-0001
+type: bootstrap
+status: approved
+context:
+  command: bootstrap-dsdd
+  existing_classification: NONE
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: package-lock.json
+      kind: package-manager
+      detail: lockfile present
+      status: detected
+  gaps: &a1
+    - type: foundation
+      id: colors
+      target: design-system/foundations/colors.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: foundation
+      id: spacing
+      target: design-system/foundations/spacing.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: foundation
+      id: typography
+      target: design-system/foundations/typography.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: component
+      id: button
+      target: design-system/components/button.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: component
+      id: input
+      target: design-system/components/input.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: component
+      id: card
+      target: design-system/components/card.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: component
+      id: dialog
+      target: design-system/components/dialog.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: pattern
+      id: authentication
+      target: design-system/patterns/authentication.yaml
+      reason: selected baseline concept is not present in the project Design System
+    - type: pattern
+      id: empty-state
+      target: design-system/patterns/empty-state.yaml
+      reason: selected baseline concept is not present in the project Design System
+proposal:
+  revision: 1
+  existing_classification: NONE
+  profile_selection: &a11
+    core:
+      id: precio-gasolineras-core
+      type: profile
+      source:
+        type: inferred
+        detail: project-level profile container
+    product_profiles:
+      - id: consumer-app
+        name: Consumer Application
+        type: profile
+        source:
+          type: baseline
+          path: baseline/profiles/consumer-app.yaml
+        selection: inferred
+  visual_profile: &a12
+    id: minimal
+    name: Minimal
+    type: archetype
+    source:
+      type: baseline
+      path: baseline/archetypes/minimal.yaml
+    selection: inferred
+  selected_foundations: &a13
+    - id: colors
+      name: Colors
+      type: foundation
+      source: &a2
+        type: baseline
+        id: colors
+        path: baseline/foundations/colors.yaml
+      selection: inferred
+    - id: spacing
+      name: Spacing
+      type: foundation
+      source: &a3
+        type: baseline
+        id: spacing
+        path: baseline/foundations/spacing.yaml
+      selection: inferred
+    - id: typography
+      name: Typography
+      type: foundation
+      source: &a4
+        type: baseline
+        id: typography
+        path: baseline/foundations/typography.yaml
+      selection: inferred
+  selected_components: &a14
+    - id: button
+      name: Button
+      type: component
+      source: &a5
+        type: baseline
+        id: button
+        path: baseline/components/button.yaml
+      selection: inferred
+    - id: input
+      name: Input
+      type: component
+      source: &a6
+        type: baseline
+        id: input
+        path: baseline/components/input.yaml
+      selection: inferred
+    - id: card
+      name: Card
+      type: component
+      source: &a7
+        type: baseline
+        id: card
+        path: baseline/components/card.yaml
+      selection: inferred
+    - id: dialog
+      name: Dialog
+      type: component
+      source: &a8
+        type: baseline
+        id: dialog
+        path: baseline/components/dialog.yaml
+      selection: inferred
+  selected_patterns: &a15
+    - id: authentication
+      name: Authentication
+      type: pattern
+      source: &a9
+        type: baseline
+        id: authentication
+        path: baseline/patterns/application/authentication.yaml
+      selection: inferred
+    - id: empty-state
+      name: Empty State
+      type: pattern
+      source: &a10
+        type: baseline
+        id: empty-state
+        path: baseline/patterns/feedback/empty-state.yaml
+      selection: inferred
+  selected_adapters: &a16 []
+  gaps: *a1
+  provisional_entities: &a17
+    - id: colors
+      name: Colors
+      type: foundation
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a2
+    - id: spacing
+      name: Spacing
+      type: foundation
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a3
+    - id: typography
+      name: Typography
+      type: foundation
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a4
+    - id: button
+      name: Button
+      type: component
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a5
+    - id: input
+      name: Input
+      type: component
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a6
+    - id: card
+      name: Card
+      type: component
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a7
+    - id: dialog
+      name: Dialog
+      type: component
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a8
+    - id: authentication
+      name: Authentication
+      type: pattern
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a9
+    - id: empty-state
+      name: Empty State
+      type: pattern
+      scope: system
+      status: proposed
+      maturity: provisional
+      canonical: true
+      source: *a10
+  source_policy: baseline is referenced as source; baseline files are not copied
+impact:
+  creates_provisional_entities: 9
+  baseline_authority: false
+approval:
+  status: approved
+  explicit: true
+  proposal_revision: 1
+resolution:
+  status: approved
+  promotion: not automatic
+bootstrap:
+  profile_selection: *a11
+  visual_profile: *a12
+  selected_foundations: *a13
+  selected_components: *a14
+  selected_patterns: *a15
+  selected_adapters: *a16
+  provisional_entities: *a17
+  approval_status: approved

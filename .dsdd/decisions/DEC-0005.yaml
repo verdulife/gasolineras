@@ -1,0 +1,46 @@
+id: DEC-0005
+type: foundation_change
+status: approved
+context:
+  command: foundation-radius-document
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: src/routes/layout.css
+      kind: styling-config
+      detail: --radius 0.625rem and computed scale sm-4xl already defined
+      status: detected
+  gaps: []
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: radius
+  foundation_type: foundation
+  change_type: documentation
+  tokens_defined:
+    - base
+    - scale.*
+    - semantic.radius-control
+    - semantic.radius-card
+    - semantic.radius-pill
+    - component.*
+  notes:
+    - Base y escala existentes en layout.css; se documentan y se agregan tokens
+      semanticos y de componente.
+impact:
+  creates_provisional_entities: 0
+  updates_existing_entities: 1
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/radius.yaml
+  - .dsdd/decisions/DEC-0005.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

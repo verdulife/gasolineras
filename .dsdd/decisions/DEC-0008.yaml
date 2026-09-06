@@ -1,0 +1,51 @@
+id: DEC-0008
+type: foundation_change
+status: approved
+context:
+  command: foundation-breakpoints-document
+  existing_classification: ESTABLISHED
+  proposal_revision: 1
+analysis:
+  evidence:
+    - path: vite.config.ts
+      kind: build-config
+      detail: tailwindcss v4 plugin active
+      status: detected
+    - path: src/app.html
+      kind: viewport
+      detail: width=device-width, initial-scale=1
+      status: detected
+  gaps: []
+proposal:
+  revision: 1
+  existing_classification: ESTABLISHED
+  foundation_id: breakpoints
+  foundation_type: foundation
+  change_type: documentation
+  tokens_defined:
+    - scale.sm
+    - scale.md
+    - scale.lg
+    - scale.xl
+    - scale.2xl
+    - semantic.primary-layout
+    - semantic.max-content
+  notes:
+    - Se mantienen defaults de Tailwind v4; mobile-first. PWA de gasolineras
+      disena para <640px primero.
+impact:
+  creates_provisional_entities: 0
+  updates_existing_entities: 1
+  baseline_authority: false
+resolution:
+  status: approved
+  promotion: automatic
+applied_paths:
+  - design-system/foundations/breakpoints.yaml
+  - .dsdd/decisions/DEC-0008.yaml
+approval:
+  status: approved
+  explicit: true
+  approved_by: user
+  date: 2025-01-27
+

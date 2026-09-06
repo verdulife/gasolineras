@@ -1,0 +1,26 @@
+schema: dsdd/v0.1
+dsdd:
+  version: "0.1"
+  strict_mode: true
+agent:
+  stop_on_unknown_governance: true
+  require_approval_for:
+    - new_component
+    - component_change
+    - new_pattern
+    - pattern_change
+    - new_foundation
+    - foundation_change
+    - library_adoption
+    - library_override
+    - canonical_replacement
+    - breaking_change
+    - system_deviation
+    - arbitrary_value
+    - instruction_conflict
+    - knowledge_conflict
+    - promotion
+documentation:
+  migration:
+    automatic: false
+    backup_required: true

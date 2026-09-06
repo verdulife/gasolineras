@@ -1,0 +1,11 @@
+id: dialog
+name: Dialog
+type: component
+scope: system
+status: proposed
+maturity: provisional
+canonical: true
+source:
+  type: baseline
+  id: dialog
+  path: baseline/components/dialog.yaml

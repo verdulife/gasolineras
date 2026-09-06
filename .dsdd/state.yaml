@@ -1,0 +1,99 @@
+    schema: dsdd/v0.1
+    classification: ESTABLISHED
+    evidence:
+      - path: design-system
+        kind: design-system-location
+        detail: directory detected; not sufficient for classification
+        status: detected
+      - path: design-system/components
+        kind: design-system-structure
+        detail: category directory detected; README-only content is insufficient
+        status: detected
+      - path: design-system/components/button.yaml
+        kind: design-system-entity
+        detail: validated canonical component metadata
+        status: canonical
+      - path: design-system/components/card.yaml
+        kind: design-system-entity
+        detail: validated canonical component metadata
+        status: canonical
+      - path: design-system/components/dialog.yaml
+        kind: design-system-entity
+        detail: validated canonical component metadata
+        status: canonical
+      - path: design-system/components/input.yaml
+        kind: design-system-entity
+        detail: validated canonical component metadata
+        status: canonical
+      - path: design-system/foundations
+        kind: design-system-structure
+        detail: category directory detected; README-only content is insufficient
+        status: detected
+      - path: design-system/foundations/colors.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved semantic palette
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/spacing.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved semantic scale
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/typography.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved scale
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/radius.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved radius scale
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/shadows.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved shadow scale
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/motion.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved motion tokens
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/breakpoints.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved breakpoints
+        status: canonical
+        maturity: established
+      - path: design-system/foundations/focus.yaml
+        kind: design-system-entity
+        detail: validated canonical foundation metadata with approved focus tokens
+        status: canonical
+        maturity: established
+      - path: design-system/patterns
+        kind: design-system-structure
+        detail: category directory detected; README-only content is insufficient
+        status: detected
+      - path: design-system/patterns/authentication.yaml
+        kind: design-system-entity
+        detail: validated canonical pattern metadata
+        status: canonical
+      - path: design-system/patterns/empty-state.yaml
+        kind: design-system-entity
+        detail: validated canonical pattern metadata
+        status: canonical
+    detection:
+      frameworks: []
+      framework_evidence: []
+      language: null
+      language_evidence: []
+      package_manager: npm
+      package_manager_evidence:
+        - path: package-lock.json
+          kind: package-manager
+          detail: lockfile present
+          status: detected
+      styling: []
+      styling_evidence: []
+      component_libraries: []
+      component_library_evidence: []
+    conflicts: []

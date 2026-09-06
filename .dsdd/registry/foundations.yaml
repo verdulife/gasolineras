@@ -1,0 +1,87 @@
+    schema: dsdd/v0.1
+    kind: foundations
+    items:
+      - id: colors
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        source:
+          type: baseline
+          id: colors
+          path: baseline/foundations/colors.yaml
+        approval:
+          decision_id: DEC-0004
+          date: 2025-01-27
+      - id: spacing
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        source:
+          type: baseline
+          id: spacing
+          path: baseline/foundations/spacing.yaml
+        approval:
+          decision_id: DEC-0003
+          date: 2025-01-27
+      - id: typography
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        source:
+          type: baseline
+          id: typography
+          path: baseline/foundations/typography.yaml
+        approval:
+          decision_id: DEC-0002
+          date: 2025-01-27
+      - id: radius
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        approval:
+          decision_id: DEC-0005
+          date: 2025-01-27
+      - id: shadows
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        approval:
+          decision_id: DEC-0006
+          date: 2025-01-27
+      - id: motion
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        approval:
+          decision_id: DEC-0007
+          date: 2025-01-27
+      - id: breakpoints
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        approval:
+          decision_id: DEC-0008
+          date: 2025-01-27
+      - id: focus
+        type: foundation
+        scope: system
+        status: active
+        maturity: stable
+        canonical: true
+        approval:
+          decision_id: DEC-0009
+          date: 2025-01-27

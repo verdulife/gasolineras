@@ -1,0 +1,22 @@
+    id: shadows
+    name: Shadows
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    tokens:
+      strategy: "Elevacion sutil; bordes preferidos sobre sombras para mantener minimalismo."
+      scale:
+        shadow-xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+        shadow-sm: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
+        shadow-md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
+        shadow-lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+      semantic:
+        shadow-card: "var(--shadow-sm)"
+        shadow-dialog: "var(--shadow-lg)"
+      dark_mode_note: "En dark mode, sombras de baja opacidad y mayor difusion para evitar halos."
+    approval:
+      decision_id: DEC-0006
+      date: 2025-01-27
+      approved_by: user

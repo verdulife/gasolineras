@@ -1,0 +1,23 @@
+schema: dsdd/v0.1
+kind: patterns
+items:
+  - id: authentication
+    type: pattern
+    scope: system
+    status: proposed
+    maturity: provisional
+    canonical: true
+    source:
+      type: baseline
+      id: authentication
+      path: baseline/patterns/application/authentication.yaml
+  - id: empty-state
+    type: pattern
+    scope: system
+    status: proposed
+    maturity: provisional
+    canonical: true
+    source:
+      type: baseline
+      id: empty-state
+      path: baseline/patterns/feedback/empty-state.yaml

@@ -1,0 +1,52 @@
+    id: typography
+    name: Typography
+    type: foundation
+    scope: system
+    status: active
+    maturity: stable
+    canonical: true
+    source:
+      type: baseline
+      id: typography
+      path: baseline/foundations/typography.yaml
+    tokens:
+      family:
+        sans: "'Inter Variable', sans-serif"
+      scale:
+        display:
+          size: 2.25rem
+          weight: 700
+          line_height: 1.1
+          letter_spacing: -0.02em
+          use: "Precio grande, hero"
+        heading:
+          size: 1.5rem
+          weight: 600
+          line_height: 1.25
+          letter_spacing: -0.01em
+          use: "Titulos de seccion, nombre gasolinera"
+        subheading:
+          size: 1.125rem
+          weight: 500
+          line_height: 1.35
+          letter_spacing: 0
+          use: "Subtitulos, etiquetas, filtros activos"
+        body:
+          size: 1rem
+          weight: 400
+          line_height: 1.5
+          letter_spacing: 0
+          use: "Texto corrido"
+        caption:
+          size: 0.8125rem
+          weight: 400
+          line_height: 1.4
+          letter_spacing: 0.01em
+          use: "Metadata, timestamps, distancias"
+      numeric:
+        tabular_nums: true
+        note: "font-variant-numeric: tabular-nums para alinear digitos de precios"
+    approval:
+      decision_id: DEC-0002
+      date: 2025-01-27
+      approved_by: user
