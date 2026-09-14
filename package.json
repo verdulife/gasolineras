@@ -32,7 +32,6 @@
 	},
 	"dependencies": {
 		"@types/leaflet": "^1.9.22",
-		"@verdulife/dsdd": "file:../dsdd-v0.1/verdulife-dsdd-0.1.0-beta.1.tgz",
 		"leaflet": "^1.9.4"
 	}
 }
