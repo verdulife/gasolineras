@@ -2,7 +2,8 @@
 	import type { GasStation, FuelType } from '$lib/types';
 	import { FUEL_LABELS } from '$lib/types';
 	import { formatPrice, formatDistance } from '$lib/format';
-	import { MapPin, Navigation, ExternalLink } from '@lucide/svelte';
+	import { favorites } from '$lib/state/favorites.svelte';
+	import { MapPin, Navigation, ExternalLink, Star } from '@lucide/svelte';
 
 	interface Props {
 		station: GasStation;
@@ -44,6 +45,13 @@
 		window.open(url, '_blank');
 	}
 
+	const isFavorite = $derived(favorites.has(station.id));
+
+	function toggleFavorite(e: MouseEvent) {
+		e.stopPropagation();
+		favorites.toggle(station);
+	}
+
 	function handleKey(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
@@ -69,6 +77,15 @@
 			</p>
 		</div>
 		<div class="card-actions">
+			<button
+				class="fav-btn"
+				class:active={isFavorite}
+				onclick={toggleFavorite}
+				aria-label={isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+				title={isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+			>
+				<Star class="size-3.5" fill={isFavorite ? 'currentColor' : 'none'} />
+			</button>
 			<button
 				class="maps-icon-btn"
 				onclick={openInMaps}
@@ -166,6 +183,30 @@
 		align-items: center;
 		gap: 0.5rem;
 		flex-shrink: 0;
+	}
+
+	.fav-btn {
+		width: 2rem;
+		height: 2rem;
+		border-radius: var(--radius-pill);
+		background: var(--muted);
+		color: var(--foreground);
+		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all var(--duration-fast) var(--ease-standard);
+		flex-shrink: 0;
+	}
+
+	.fav-btn:hover {
+		filter: brightness(0.92);
+	}
+
+	.fav-btn.active {
+		background: var(--brand);
+		color: var(--brand-foreground);
 	}
 
 	.maps-icon-btn {

@@ -3,7 +3,8 @@
 	import { listStationsInRadius } from '$lib/data';
 	import { StationCard } from '$lib/components/station';
 	import { prefs } from '$lib/state/preferences.svelte';
-	import type { GasStation } from '$lib/types';
+	import { favorites } from '$lib/state/favorites.svelte';
+	import type { FuelType, GasStation } from '$lib/types';
 	import { Crosshair } from '@lucide/svelte';
 
 	// ---------- State ----------
@@ -16,12 +17,37 @@
 
 	let fetchSeq = 0;
 
-	// Derived: only show stations that have at least one active fuel price.
-	let visibleStations = $derived(
-		stations.filter(
+	/** Sort fuel used for price comparisons. */
+	const priceFuel = $derived<FuelType>(prefs.fuels[0] ?? 'gasolina95');
+
+	/** Price–ascending comparator; missing fuel goes last, ties broken by distance. */
+	function priceCompare(a: GasStation, b: GasStation): number {
+		const pa =
+			priceFuel in a.prices && typeof a.prices[priceFuel] === 'number'
+				? a.prices[priceFuel]!
+				: Number.POSITIVE_INFINITY;
+		const pb =
+			priceFuel in b.prices && typeof b.prices[priceFuel] === 'number'
+				? b.prices[priceFuel]!
+				: Number.POSITIVE_INFINITY;
+		return pa - pb || a.distanceM - b.distanceM;
+	}
+
+	/** Favorites as render-ready stations, sorted by the active mode. */
+	let favoriteStations = $derived.by(() => {
+		const list = favorites.asStations(userPosition);
+		if (prefs.sort === 'distance') return [...list].sort((a, b) => a.distanceM - b.distanceM);
+		return [...list].sort(priceCompare);
+	});
+
+	// Derived: show only stations that have at least one active fuel price, or
+	// the favorites list when the favorites-only mode is on.
+	let visibleStations = $derived.by(() => {
+		if (prefs.favoritesOnly) return favoriteStations;
+		return stations.filter(
 			(s) => prefs.fuels.length === 0 || prefs.fuels.some((f) => typeof s.prices[f] === 'number')
-		)
-	);
+		);
+	});
 
 	// ---------- Geolocation ----------
 	function locateUser() {
@@ -64,6 +90,7 @@
 			});
 			if (mySeq !== fetchSeq) return;
 			stations = result;
+			favorites.refresh(result);
 		} catch (e) {
 			if (mySeq !== fetchSeq) return;
 			error =
@@ -122,7 +149,9 @@
 		<h1 class="header-title">Gasolineras</h1>
 		{#if !loading || stations.length > 0}
 			<p class="header-subtitle">
-				{visibleStations.length} en {prefs.radiusKm} km
+				{prefs.favoritesOnly
+					? `${visibleStations.length} ${visibleStations.length === 1 ? 'favorita' : 'favoritas'}`
+					: `${visibleStations.length} en ${prefs.radiusKm} km`}
 			</p>
 		{:else}
 			<p class="header-subtitle">&nbsp;</p>
@@ -180,7 +209,12 @@
 		<!-- Empty state -->
 		{:else if visibleStations.length === 0}
 			<div class="center-state">
-				<p class="empty-text">Sin gasolineras en un radio de {prefs.radiusKm} km</p>
+				{#if prefs.favoritesOnly}
+					<p class="empty-text">Aún no tienes gasolineras favoritas</p>
+					<p class="center-text">Marca la estrella de una gasolinera para verla aquí</p>
+				{:else}
+					<p class="empty-text">Sin gasolineras en un radio de {prefs.radiusKm} km</p>
+				{/if}
 			</div>
 
 		<!-- Station list -->
