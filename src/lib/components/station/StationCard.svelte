@@ -67,20 +67,14 @@
 	onclick={onclick}
 	onkeydown={handleKey}
 >
-	<!-- Row 1: two columns — text (name + location) and actions, side by side. -->
+	<!-- Row 1: two columns — text (name + location) and actions (icons + distance). -->
 	<div class="card-top">
 		<div class="card-text">
 			<h3 class="station-name">{station.name}</h3>
 			<p class="station-address">{station.address}</p>
-			<div class="station-meta">
-				{#if station.municipality}
-					<span class="station-municipality">{station.municipality}</span>
-				{/if}
-				<span class="distance">
-					<Navigation class="size-3" />
-					{formatDistance(station.distanceM)}
-				</span>
-			</div>
+			{#if station.municipality}
+				<span class="station-municipality">{station.municipality}</span>
+			{/if}
 		</div>
 		<div class="card-actions">
 			<button
@@ -100,16 +94,6 @@
 			>
 				<ExternalLink class="size-4" />
 			</button>
-		</div>
-	</div>
-
-	<!-- Row 2: location block (street · municipality + distance). -->
-	<div class="station-location">
-		<p class="station-address">{station.address}</p>
-		<div class="station-meta">
-			{#if station.municipality}
-				<span class="station-municipality">{station.municipality}</span>
-			{/if}
 			<span class="distance">
 				<Navigation class="size-3" />
 				{formatDistance(station.distanceM)}
@@ -244,13 +228,6 @@
 		white-space: nowrap;
 	}
 
-	.station-meta {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 0.5rem;
-	}
-
 	.station-municipality {
 		font-size: 0.6875rem;
 		font-weight: 600;
@@ -270,7 +247,8 @@
 		font-weight: 600;
 		color: var(--muted-foreground);
 		white-space: nowrap;
-		flex-shrink: 0;
+		margin-top: 0.375rem;
+		align-self: center;
 	}
 
 	/* ---- Best-price badge ---- */
