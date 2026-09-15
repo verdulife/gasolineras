@@ -67,7 +67,7 @@
 	onclick={onclick}
 	onkeydown={handleKey}
 >
-	<!-- Row 1: two columns — text (name + location) and actions (icons + distance). -->
+	<!-- Row 1: two columns — text (name + location + distance) and actions. -->
 	<div class="card-top">
 		<div class="card-text">
 			<h3 class="station-name">{station.name}</h3>
@@ -75,6 +75,10 @@
 			{#if station.municipality}
 				<span class="station-municipality">{station.municipality}</span>
 			{/if}
+			<span class="distance">
+				<Navigation class="size-3" />
+				{formatDistance(station.distanceM)}
+			</span>
 		</div>
 		<div class="card-actions">
 			<button
@@ -94,10 +98,6 @@
 			>
 				<ExternalLink class="size-4" />
 			</button>
-			<span class="distance">
-				<Navigation class="size-3" />
-				{formatDistance(station.distanceM)}
-			</span>
 		</div>
 	</div>
 
@@ -247,8 +247,7 @@
 		font-weight: 600;
 		color: var(--muted-foreground);
 		white-space: nowrap;
-		margin-top: 0.375rem;
-		align-self: center;
+		margin-top: 0.1875rem;
 	}
 
 	/* ---- Best-price badge ---- */
