@@ -67,9 +67,21 @@
 	onclick={onclick}
 	onkeydown={handleKey}
 >
-	<!-- Row 1: name + actions (column top-right, no background). -->
+	<!-- Row 1: two columns — text (name + location) and actions, side by side. -->
 	<div class="card-top">
-		<h3 class="station-name">{station.name}</h3>
+		<div class="card-text">
+			<h3 class="station-name">{station.name}</h3>
+			<p class="station-address">{station.address}</p>
+			<div class="station-meta">
+				{#if station.municipality}
+					<span class="station-municipality">{station.municipality}</span>
+				{/if}
+				<span class="distance">
+					<Navigation class="size-3" />
+					{formatDistance(station.distanceM)}
+				</span>
+			</div>
+		</div>
 		<div class="card-actions">
 			<button
 				class="icon-btn"
@@ -159,17 +171,25 @@
 		outline-offset: 2px;
 	}
 
-	/* ---- Row 1: name + actions ---- */
+	/* ---- Row 1: two columns (text | actions) ---- */
 	.card-top {
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
-		gap: 0.75rem;
+		gap: 1rem;
+		padding-bottom: 0.375rem;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.card-text {
+		flex: 1;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.1875rem;
 	}
 
 	.station-name {
-		flex: 1;
-		min-width: 0;
 		margin: 0;
 		font-size: 1rem;
 		font-weight: 700;
@@ -212,15 +232,7 @@
 		color: var(--brand);
 	}
 
-	/* ---- Row 2: location ---- */
-	.station-location {
-		display: flex;
-		flex-direction: column;
-		gap: 0.1875rem;
-		padding-bottom: 0.375rem;
-		border-bottom: 1px solid var(--border);
-	}
-
+	/* ---- Text column details (address · municipality + distance) ---- */
 	.station-address {
 		margin: 0;
 		font-size: 0.8125rem;
@@ -311,6 +323,7 @@
 		line-height: 1.05;
 		letter-spacing: 0;
 		font-variant-numeric: tabular-nums;
+		margin-top: 0.25rem;
 	}
 
 	.price-value.best-price {
