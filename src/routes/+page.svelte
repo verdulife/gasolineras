@@ -3,6 +3,7 @@
 	import { listStationsInRadius } from '$lib/data';
 	import { StationCard } from '$lib/components/station';
 	import { FilterPanel } from '$lib/components/filters';
+	import { AppNav } from '$lib/components/ui/app-nav';
 	import { prefs, DEFAULT_RADIUS_KM } from '$lib/state/preferences.svelte';
 	import { favorites } from '$lib/state/favorites.svelte';
 	import type { FuelType, GasStation } from '$lib/types';
@@ -154,6 +155,8 @@
 </svelte:head>
 
 <main class="shell">
+	<AppNav />
+
 	<!-- Sticky header -->
 	<header class="header">
 		<div class="header-left">
