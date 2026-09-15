@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { AppNav } from '$lib/components/ui/app-nav';
 	import { Map } from '$lib/components/map';
 	import { BottomSheet } from '$lib/components/ui/bottom-sheet';
@@ -97,6 +98,26 @@
 	}
 
 	// ---------- Geolocation ----------
+	function requestPosition(
+		onSuccess: (lat: number, lng: number) => void,
+		onError: (err: GeolocationPositionError) => void
+	): void {
+		navigator.geolocation.getCurrentPosition(
+			(pos) => onSuccess(pos.coords.latitude, pos.coords.longitude),
+			onError,
+			{ enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+		);
+	}
+
+	/** Centers the map on the user and loads the surrounding zone. */
+	function applyUserPosition(lat: number, lng: number) {
+		userPosition = { lat, lng };
+		const bounds = bboxFromRadius({ lat, lng }, 3000);
+		lastBounds = bounds;
+		void loadZone(bounds);
+	}
+
+	/** Locate button: reports errors and drives the locating spinner. */
 	function locateUser() {
 		if (!('geolocation' in navigator)) {
 			locateError = 'Tu navegador no soporta geolocalización';
@@ -104,15 +125,10 @@
 		}
 		locating = true;
 		locateError = null;
-		navigator.geolocation.getCurrentPosition(
-			(pos) => {
-				const lat = pos.coords.latitude;
-				const lng = pos.coords.longitude;
-				userPosition = { lat, lng };
+		requestPosition(
+			(lat, lng) => {
+				applyUserPosition(lat, lng);
 				locating = false;
-				const bounds = bboxFromRadius({ lat, lng }, 3000);
-				lastBounds = bounds;
-				void loadZone(bounds);
 			},
 			(err) => {
 				locating = false;
@@ -122,10 +138,29 @@
 						: err.code === 2
 							? 'No se pudo obtener tu ubicación'
 							: 'Tiempo de espera agotado al obtener ubicación';
-			},
-			{ enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+			}
 		);
 	}
+
+	/**
+	 * Silent attempt on mount. iOS Safari cannot be queried for the stored
+	 * geolocation permission, so asking directly is the only way to show the
+	 * user position by default for returning users. Failures keep the default
+	 * map center and the locate button as fallback.
+	 */
+	function tryLocateSilently() {
+		if (!('geolocation' in navigator)) return;
+		requestPosition(
+			(lat, lng) => applyUserPosition(lat, lng),
+			() => {
+				// Silent — the default map center stays; no error toast on load.
+			}
+		);
+	}
+
+	onMount(() => {
+		tryLocateSilently();
+	});
 
 	function handleSelect(station: GasStation) {
 		selectedId = station.id;

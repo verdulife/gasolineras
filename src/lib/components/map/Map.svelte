@@ -34,6 +34,8 @@
 	let mapEl: HTMLDivElement | undefined = $state(undefined);
 	let L: typeof import('leaflet') | undefined;
 	let map: LLeaflet.Map | undefined;
+	/** Reactive readiness flag so effects re-run once the map exists. */
+	let mapReady = $state(false);
 	let markers = new Map<string, LLeaflet.Marker>();
 	let userMarker: LLeaflet.CircleMarker | null = null;
 	let boundsTimer: ReturnType<typeof setTimeout> | undefined;
@@ -163,6 +165,7 @@
 		// Debounced viewport change: emit the current bounds so the page
 		// can load stations for the visible zone.
 		map.on('moveend zoomend', scheduleBounds);
+		mapReady = true;
 	});
 
 	onDestroy(() => {
@@ -174,7 +177,8 @@
 	// Show / move the user location marker (GPS)
 	$effect(() => {
 		const loc = userLocation; // reactive dependency read first
-		if (!map || !L) return;
+		const ready = mapReady;
+		if (!ready || !map || !L) return;
 		if (!loc) {
 			userMarker?.remove();
 			userMarker = null;
