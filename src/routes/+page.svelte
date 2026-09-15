@@ -2,10 +2,11 @@
 	import { onMount } from 'svelte';
 	import { listStationsInRadius } from '$lib/data';
 	import { StationCard } from '$lib/components/station';
-	import { prefs } from '$lib/state/preferences.svelte';
+	import { FilterPanel } from '$lib/components/filters';
+	import { prefs, DEFAULT_RADIUS_KM } from '$lib/state/preferences.svelte';
 	import { favorites } from '$lib/state/favorites.svelte';
 	import type { FuelType, GasStation } from '$lib/types';
-	import { Crosshair } from '@lucide/svelte';
+	import { Crosshair, Filter } from '@lucide/svelte';
 
 	// ---------- State ----------
 	let stations: GasStation[] = $state([]);
@@ -14,6 +15,15 @@
 	let userPosition = $state<{ lat: number; lng: number } | null>(null);
 	let locating = $state(false);
 	let locateError = $state<string | null>(null);
+	let showFilter = $state(false);
+
+	/** True when any filter deviates from the defaults (used by the header badge). */
+	let isFiltered = $derived(
+		prefs.fuels.length > 0 ||
+			prefs.radiusKm !== DEFAULT_RADIUS_KM ||
+			prefs.sort !== 'price' ||
+			prefs.favoritesOnly
+	);
 
 	let fetchSeq = 0;
 
@@ -146,16 +156,29 @@
 <main class="shell">
 	<!-- Sticky header -->
 	<header class="header">
-		<h1 class="header-title">Gasolineras</h1>
-		{#if !loading || stations.length > 0}
-			<p class="header-subtitle">
-				{prefs.favoritesOnly
-					? `${visibleStations.length} ${visibleStations.length === 1 ? 'favorita' : 'favoritas'}`
-					: `${visibleStations.length} en ${prefs.radiusKm} km`}
-			</p>
-		{:else}
-			<p class="header-subtitle">&nbsp;</p>
-		{/if}
+		<div class="header-left">
+			<h1 class="header-title">Gasolineras</h1>
+			{#if !loading || stations.length > 0}
+				<p class="header-subtitle">
+					{prefs.favoritesOnly
+						? `${visibleStations.length} ${visibleStations.length === 1 ? 'favorita' : 'favoritas'}`
+						: `${visibleStations.length} en ${prefs.radiusKm} km`}
+				</p>
+			{:else}
+				<p class="header-subtitle">&nbsp;</p>
+			{/if}
+		</div>
+		<div class="header-actions">
+			<button
+				class="filter-btn"
+				class:active={showFilter || isFiltered}
+				onclick={() => (showFilter = !showFilter)}
+				aria-label="Filtros"
+				title="Filtros"
+			>
+				<Filter class="size-3.5" />
+			</button>
+		</div>
 	</header>
 
 	<!-- Scrollable list area -->
@@ -226,6 +249,10 @@
 			</div>
 		{/if}
 	</div>
+
+	{#if showFilter}
+		<FilterPanel onclose={() => (showFilter = false)} />
+	{/if}
 </main>
 
 <style>
@@ -242,6 +269,16 @@
 		background: var(--card);
 		padding: var(--space-page);
 		border-bottom: 1px solid var(--border);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+
+	.header-left {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
 	}
 
 	.header-title {
@@ -255,6 +292,38 @@
 		font-size: 0.75rem;
 		color: var(--muted-foreground);
 		margin: 2px 0 0;
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+
+	.filter-btn {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: var(--radius-pill);
+		background: var(--card);
+		color: var(--foreground);
+		border: 1px solid var(--border);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all var(--duration-fast) var(--ease-standard);
+		flex-shrink: 0;
+	}
+
+	.filter-btn:hover {
+		filter: brightness(0.95);
+	}
+
+	.filter-btn.active {
+		background: var(--brand);
+		color: var(--brand-foreground);
+		border-color: transparent;
 	}
 
 	/* Scrollable list area */
