@@ -3,17 +3,21 @@
 	import { FUEL_LABELS } from '$lib/types';
 	import { formatPrice, formatDistance } from '$lib/format';
 	import { favorites } from '$lib/state/favorites.svelte';
-	import { MapPin, Navigation, ExternalLink, Star } from '@lucide/svelte';
+	import { MapPin, Navigation, ExternalLink, Star, Sparkles } from '@lucide/svelte';
 
 	interface Props {
 		station: GasStation;
 		selected?: boolean;
 		/** Active fuel filters. When empty, all fuels are shown. */
 		activeFuels?: FuelType[];
+		/** Marks the cheapest station in the current list (price-sorted views). */
+		best?: boolean;
+		/** Fuel that drives the price sort, used to highlight the best price chip. */
+		bestFuel?: FuelType;
 		onclick?: () => void;
 	}
 
-	let { station, selected = false, activeFuels = [], onclick }: Props = $props();
+	let { station, selected = false, activeFuels = [], best = false, bestFuel, onclick }: Props = $props();
 
 	const FUEL_PRICES: { type: FuelType; label: string }[] = [
 		{ type: 'gasolina95', label: FUEL_LABELS.gasolina95 },
@@ -101,12 +105,21 @@
 		</div>
 	</div>
 
+	{#if best}
+		<span class="best-badge">
+			<Sparkles class="size-3" />
+			Más barata
+		</span>
+	{/if}
+
 	<div class="price-row">
 		{#each visibleFuels as fuel (fuel.type)}
 			{#if station.prices[fuel.type] != null}
 				<div class="price-chip">
 					<span class="price-label">{fuel.label}</span>
-					<span class="price-value">{formatPrice(station.prices[fuel.type]!)}</span>
+					<span class="price-value" class:best-price={best && bestFuel === fuel.type}>
+						{formatPrice(station.prices[fuel.type]!)}
+					</span>
 				</div>
 			{/if}
 		{/each}
@@ -245,6 +258,20 @@
 		flex-wrap: wrap;
 	}
 
+	.best-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		align-self: flex-start;
+		background: var(--brand);
+		color: var(--brand-foreground);
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		padding: 0.25rem 0.625rem;
+		border-radius: var(--radius-pill);
+	}
+
 	.price-chip {
 		background: var(--muted);
 		border-radius: calc(var(--radius) * 0.8);
@@ -271,5 +298,9 @@
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
 		letter-spacing: -0.02em;
+	}
+
+	.price-value.best-price {
+		color: var(--price-lower);
 	}
 </style>

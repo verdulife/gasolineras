@@ -246,8 +246,13 @@
 		<!-- Station list -->
 		{:else}
 			<div class="station-list" aria-label="Lista de gasolineras">
-				{#each visibleStations as station (station.id)}
-					<StationCard {station} activeFuels={prefs.fuels} />
+				{#each visibleStations as station, i (station.id)}
+					<StationCard
+						{station}
+						activeFuels={prefs.fuels}
+						best={prefs.sort === 'price' && i === 0}
+						bestFuel={priceFuel}
+					/>
 				{/each}
 			</div>
 		{/if}
@@ -255,6 +260,16 @@
 
 	{#if showFilter}
 		<FilterPanel onclose={() => (showFilter = false)} />
+	{/if}
+
+	{#if error && stations.length > 0}
+		<div class="floating-alert" role="alert">
+			<span>{error}</span>
+			<button class="alert-retry" onclick={retry} aria-label="Reintentar carga de gasolineras">
+				Reintentar
+			</button>
+			<button class="alert-dismiss" onclick={() => (error = null)} aria-label="Cerrar">✕</button>
+		</div>
 	{/if}
 </main>
 
@@ -465,6 +480,49 @@
 
 	.locate-dismiss:hover {
 		opacity: 1;
+	}
+
+	/* Floating alert over an already-populated list */
+	.floating-alert {
+		position: fixed;
+		top: 4.5rem;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2100;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		background: var(--destructive);
+		color: white;
+		font-size: 0.75rem;
+		font-weight: 500;
+		padding: 0.4rem 0.75rem;
+		border-radius: 999px;
+		box-shadow: var(--shadow-md);
+		max-width: 90%;
+	}
+
+	.alert-retry {
+		background: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		color: white;
+		border-radius: 999px;
+		padding: 0.15rem 0.6rem;
+		font-size: 0.6875rem;
+		font-weight: 600;
+		font-family: inherit;
+		cursor: pointer;
+	}
+
+	.alert-dismiss {
+		background: none;
+		border: none;
+		color: white;
+		font-size: 0.75rem;
+		cursor: pointer;
+		opacity: 0.8;
+		line-height: 1;
+		padding: 0;
 	}
 
 	/* Spinner */
