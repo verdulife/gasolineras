@@ -2,7 +2,8 @@
 	import { FUEL_LABELS } from '$lib/types';
 	import {
 		prefs,
-		RADIUS_PRESETS_KM,
+		RADIUS_MIN_KM,
+		RADIUS_MAX_KM,
 		ALL_FUELS,
 		clearFuels,
 		setRadiusKm,
@@ -16,6 +17,11 @@
 	}
 
 	let { onclose }: Props = $props();
+
+	/** Fill percentage of the range track, computed from the stored radius. */
+	const rangeFillPercent = $derived(
+		((prefs.radiusKm - RADIUS_MIN_KM) / (RADIUS_MAX_KM - RADIUS_MIN_KM)) * 100
+	);
 
 	function onBackdrop(e: MouseEvent) {
 		if (e.target === e.currentTarget) onclose?.();
@@ -53,13 +59,21 @@
 
 		<section class="filter-section">
 			<h3 class="filter-section-title">Radio</h3>
-			<div class="chip-row">
-				{#each RADIUS_PRESETS_KM as km (km)}
-					<button class="chip" class:chip-active={prefs.radiusKm === km} onclick={() => setRadiusKm(km)}>
-						{km} km
-					</button>
-				{/each}
+			<div class="range-row">
+				<input
+					class="range"
+					type="range"
+					min={RADIUS_MIN_KM}
+					max={RADIUS_MAX_KM}
+					step={1}
+					value={prefs.radiusKm}
+					oninput={(e) => setRadiusKm(Number((e.target as HTMLInputElement).value))}
+					style={`--range-fill: ${rangeFillPercent}%`}
+					aria-label="Radio de búsqueda en kilómetros"
+				/>
+				<span class="range-value">{prefs.radiusKm} km</span>
 			</div>
+			<p class="range-hint">De {RADIUS_MIN_KM} a {RADIUS_MAX_KM} km</p>
 		</section>
 
 		<section class="filter-section">
@@ -169,6 +183,78 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.375rem;
+	}
+
+	.range-row {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.range {
+		-webkit-appearance: none;
+		appearance: none;
+		flex: 1;
+		min-width: 0;
+		height: 0.375rem;
+		border-radius: var(--radius-pill);
+		background: linear-gradient(
+			to right,
+			var(--brand) var(--range-fill),
+			var(--muted) var(--range-fill)
+		);
+		cursor: pointer;
+	}
+
+	.range::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		background: var(--card);
+		border: 2px solid var(--brand);
+		box-shadow: var(--shadow-sm);
+		cursor: grab;
+		transition: transform var(--duration-fast) var(--ease-standard);
+	}
+
+	.range::-webkit-slider-thumb:hover {
+		transform: scale(1.12);
+	}
+
+	.range::-moz-range-thumb {
+		width: 1.375rem;
+		height: 1.375rem;
+		border-radius: 50%;
+		background: var(--card);
+		border: 2px solid var(--brand);
+		box-shadow: var(--shadow-sm);
+		cursor: grab;
+	}
+
+	.range:focus-visible {
+		outline: 2px solid var(--ring);
+		outline-offset: 4px;
+	}
+
+	.range-value {
+		flex-shrink: 0;
+		min-width: 3.5rem;
+		text-align: center;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		color: var(--foreground);
+		background: var(--muted);
+		border-radius: var(--radius-pill);
+		padding: 0.25rem 0.625rem;
+	}
+
+	.range-hint {
+		font-size: 0.6875rem;
+		color: var(--muted-foreground);
+		margin: -0.25rem 0 0;
 	}
 
 	.chip {

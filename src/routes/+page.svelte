@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { listStationsInRadius } from '$lib/data';
+	import { priceDistanceCompare } from '$lib/ranking';
 	import { StationCard } from '$lib/components/station';
 	import { FilterPanel } from '$lib/components/filters';
 	import { AppNav } from '$lib/components/ui/app-nav';
@@ -31,17 +32,9 @@
 	/** Sort fuel used for price comparisons. */
 	const priceFuel = $derived<FuelType>(prefs.fuels[0] ?? 'gasolina95');
 
-	/** Price–ascending comparator; missing fuel goes last, ties broken by distance. */
+	/** Price–ascending comparator with the shared 0,05 € proximity band. */
 	function priceCompare(a: GasStation, b: GasStation): number {
-		const pa =
-			priceFuel in a.prices && typeof a.prices[priceFuel] === 'number'
-				? a.prices[priceFuel]!
-				: Number.POSITIVE_INFINITY;
-		const pb =
-			priceFuel in b.prices && typeof b.prices[priceFuel] === 'number'
-				? b.prices[priceFuel]!
-				: Number.POSITIVE_INFINITY;
-		return pa - pb || a.distanceM - b.distanceM;
+		return priceDistanceCompare(a, b, priceFuel);
 	}
 
 	/** Favorites as render-ready stations, sorted by the active mode. */

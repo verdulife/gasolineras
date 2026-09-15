@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn-svelte/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "@fontsource/dseg7-classic/latin-400.css";
+@import "@fontsource/dseg7-classic/latin-700.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -30,6 +32,7 @@
 	--chart-4: oklch(0.371 0 0);
 	--chart-5: oklch(0.269 0 0);
 	--radius: 0.625rem;
+	--font-display: 'DSEG7 Classic', 'Inter Variable', ui-monospace, 'SF Mono', Menlo, monospace;
 	--radius-control: 0.625rem;
 	--radius-card: 1rem;
 	--radius-pill: 9999px;

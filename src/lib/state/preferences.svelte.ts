@@ -9,7 +9,8 @@ import type { FuelType, Preferences, SortMode } from '$lib/types';
 const STORAGE_KEY = 'prefs.v1';
 const LEGACY_FILTER_KEY = 'fuelFilter';
 
-export const RADIUS_PRESETS_KM = [5, 10, 15, 20, 30, 50] as const;
+export const RADIUS_MIN_KM = 5;
+export const RADIUS_MAX_KM = 100;
 export const DEFAULT_RADIUS_KM = 30;
 
 export const ALL_FUELS: FuelType[] = ['gasolina95', 'gasolina98', 'diesel', 'diesel_premium'];
@@ -26,7 +27,9 @@ function isFuel(value: unknown): value is FuelType {
 }
 
 function isRadius(value: unknown): value is number {
-	return typeof value === 'number' && (RADIUS_PRESETS_KM as readonly number[]).includes(value);
+	return (
+		typeof value === 'number' && value >= RADIUS_MIN_KM && value <= RADIUS_MAX_KM
+	);
 }
 
 function readStored(): Preferences {

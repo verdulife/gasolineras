@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
 import grid from '$lib/province-grid.json';
+import { priceDistanceCompare } from '$lib/ranking';
 
 /**
  * Server-side proxy for the Spanish government fuel-price API.
@@ -206,13 +207,9 @@ export const GET: RequestHandler = async ({ url }) => {
 			// Pure distance ordering — used by the favorites / proximity sort.
 			ordered = [...pool].sort((a, b) => a.distanceM - b.distanceM);
 		} else if (sort === 'price') {
-			// Ascending price for the requested fuel; stations without that fuel
-			// go last, ties broken by distance.
-			const priceOf = (s: Station): number => {
-				const p = s.prices[rankFuel];
-				return typeof p === 'number' ? p : Number.POSITIVE_INFINITY;
-			};
-			ordered = [...pool].sort((a, b) => priceOf(a) - priceOf(b) || a.distanceM - b.distanceM);
+			// Ascending price for the requested fuel, clustered in 0,05 € bands
+			// and ordered by distance within each band; missing fuel goes last.
+			ordered = [...pool].sort((a, b) => priceDistanceCompare(a, b, rankFuel));
 		} else {
 			// Default: order by relevance (cheap AND close).
 			const withFuel = pool.filter((s) => typeof s.prices[rankFuel] === 'number');
