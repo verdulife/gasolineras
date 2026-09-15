@@ -45,6 +45,18 @@
 	});
 
 	// ---------- Geolocation ----------
+	function requestPosition(
+		onSuccess: (lat: number, lng: number) => void,
+		onError: (err: GeolocationPositionError) => void
+	): void {
+		navigator.geolocation.getCurrentPosition(
+			(pos) => onSuccess(pos.coords.latitude, pos.coords.longitude),
+			onError,
+			{ enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+		);
+	}
+
+	/** CTA handler: reports errors and drives the locating spinner. */
 	function locateUser() {
 		if (!('geolocation' in navigator)) {
 			locateError = 'Tu navegador no soporta geolocalización';
@@ -52,9 +64,9 @@
 		}
 		locating = true;
 		locateError = null;
-		navigator.geolocation.getCurrentPosition(
-			(pos) => {
-				userPosition = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+		requestPosition(
+			(lat, lng) => {
+				userPosition = { lat, lng };
 				locating = false;
 			},
 			(err) => {
@@ -65,8 +77,27 @@
 						: err.code === 2
 							? 'No se pudo obtener tu ubicación'
 							: 'Tiempo de espera agotado al obtener ubicación';
+			}
+		);
+	}
+
+	/**
+	 * Silent attempt on mount. iOS Safari does not support
+	 * `navigator.permissions.query` for geolocation, so the stored permission
+	 * cannot be read — the only way to skip the manual “Usar mi ubicación”
+	 * step for returning users is to ask directly. If the permission was never
+	 * granted or gets revoked later, this fails silently and the welcome state
+	 * with the CTA remains the fallback.
+	 */
+	function tryLocateSilently() {
+		if (!('geolocation' in navigator)) return;
+		requestPosition(
+			(lat, lng) => {
+				userPosition = { lat, lng };
 			},
-			{ enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+			() => {
+				// Silent — the welcome state stays; no error toast on load.
+			}
 		);
 	}
 
@@ -97,16 +128,9 @@
 		}
 	}
 
-	// ---------- Mount: auto-locate if permission already granted ----------
+	// ---------- Mount: silently try to locate (skips the CTA for returning users) ----------
 	onMount(() => {
-		const perm = navigator.permissions?.query;
-		if (perm) {
-			perm({ name: 'geolocation' })
-				.then((s) => {
-					if (s.state === 'granted') locateUser();
-				})
-				.catch(() => {});
-		}
+		tryLocateSilently();
 	});
 
 	// ---------- Reactive refetch on prefs change ----------
