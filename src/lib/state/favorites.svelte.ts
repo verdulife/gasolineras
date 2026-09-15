@@ -1,5 +1,4 @@
 import type { GasStation, StationSnapshot } from '$lib/types';
-import { haversineM, type LatLng } from '$lib/geo';
 
 /**
  * Reactive, localStorage-backed favorites store.
@@ -78,15 +77,6 @@ class FavoritesStore {
 			return toSnapshot(fresh, Date.now());
 		});
 		if (changed) this.#persist();
-	}
-
-	/** Favorite snapshots as `GasStation`s, with distance from `center` when given. */
-	asStations(center?: LatLng | null): GasStation[] {
-		return this.items.map((f) => ({
-			...f,
-			distanceM: center ? Math.round(haversineM(center.lat, center.lng, f.lat, f.lng)) : 0,
-			updatedAt: f.savedAt
-		}));
 	}
 
 	#persist(): void {

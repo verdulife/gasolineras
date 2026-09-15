@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { listStationsInRadius } from '$lib/data';
-	import { priceDistanceCompare } from '$lib/ranking';
 	import { StationCard } from '$lib/components/station';
 	import { FilterPanel } from '$lib/components/filters';
 	import { AppNav } from '$lib/components/ui/app-nav';
 	import { prefs, DEFAULT_RADIUS_KM } from '$lib/state/preferences.svelte';
 	import { favorites } from '$lib/state/favorites.svelte';
-	import type { FuelType, GasStation } from '$lib/types';
+	import type { GasStation } from '$lib/types';
 	import { Crosshair, Filter } from '@lucide/svelte';
 
 	// ---------- State ----------
@@ -24,33 +23,25 @@
 		prefs.fuels.length > 0 ||
 			prefs.radiusKm !== DEFAULT_RADIUS_KM ||
 			prefs.sort !== 'price' ||
-			prefs.favoritesOnly
+			prefs.favoritesFirst
 	);
 
 	let fetchSeq = 0;
 
-	/** Sort fuel used for price comparisons. */
-	const priceFuel = $derived<FuelType>(prefs.fuels[0] ?? 'gasolina95');
-
-	/** Price–ascending comparator with the shared 0,05 € proximity band. */
-	function priceCompare(a: GasStation, b: GasStation): number {
-		return priceDistanceCompare(a, b, priceFuel);
-	}
-
-	/** Favorites as render-ready stations, sorted by the active mode. */
-	let favoriteStations = $derived.by(() => {
-		const list = favorites.asStations(userPosition);
-		if (prefs.sort === 'distance') return [...list].sort((a, b) => a.distanceM - b.distanceM);
-		return [...list].sort(priceCompare);
-	});
-
-	// Derived: show only stations that have at least one active fuel price, or
-	// the favorites list when the favorites-only mode is on.
+	/**
+	 * Stations with at least one active fuel price. With the favorites-first
+	 * mode on, favorites keep their relative (sorted) order but move to the top.
+	 */
 	let visibleStations = $derived.by(() => {
-		if (prefs.favoritesOnly) return favoriteStations;
-		return stations.filter(
+		const base = stations.filter(
 			(s) => prefs.fuels.length === 0 || prefs.fuels.some((f) => typeof s.prices[f] === 'number')
 		);
+		if (!prefs.favoritesFirst) return base;
+		const favIds = new Set(favorites.items.map((f) => f.id));
+		return [
+			...base.filter((s) => favIds.has(s.id)),
+			...base.filter((s) => !favIds.has(s.id))
+		];
 	});
 
 	// ---------- Geolocation ----------
@@ -156,9 +147,7 @@
 			<h1 class="header-title">Gasolineras</h1>
 			{#if !loading || stations.length > 0}
 				<p class="header-subtitle">
-					{prefs.favoritesOnly
-						? `${visibleStations.length} ${visibleStations.length === 1 ? 'favorita' : 'favoritas'}`
-						: `${visibleStations.length} en ${prefs.radiusKm} km`}
+					{visibleStations.length} en {prefs.radiusKm} km
 				</p>
 			{:else}
 				<p class="header-subtitle">&nbsp;</p>
@@ -228,24 +217,14 @@
 		<!-- Empty state -->
 		{:else if visibleStations.length === 0}
 			<div class="center-state">
-				{#if prefs.favoritesOnly}
-					<p class="empty-text">Aún no tienes gasolineras favoritas</p>
-					<p class="center-text">Marca la estrella de una gasolinera para verla aquí</p>
-				{:else}
-					<p class="empty-text">Sin gasolineras en un radio de {prefs.radiusKm} km</p>
-				{/if}
+				<p class="empty-text">Sin gasolineras en un radio de {prefs.radiusKm} km</p>
 			</div>
 
 		<!-- Station list -->
 		{:else}
 			<div class="station-list" aria-label="Lista de gasolineras">
-				{#each visibleStations as station, i (station.id)}
-					<StationCard
-						{station}
-						activeFuels={prefs.fuels}
-						best={prefs.sort === 'price' && i === 0}
-						bestFuel={priceFuel}
-					/>
+				{#each visibleStations as station (station.id)}
+					<StationCard {station} activeFuels={prefs.fuels} />
 				{/each}
 			</div>
 		{/if}

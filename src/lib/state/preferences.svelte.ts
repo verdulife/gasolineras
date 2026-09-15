@@ -19,7 +19,7 @@ const DEFAULT_PREFS: Preferences = {
 	radiusKm: DEFAULT_RADIUS_KM,
 	fuels: [],
 	sort: 'price',
-	favoritesOnly: false
+	favoritesFirst: false
 };
 
 function isFuel(value: unknown): value is FuelType {
@@ -42,7 +42,7 @@ function readStored(): Preferences {
 				radiusKm: isRadius(parsed.radiusKm) ? parsed.radiusKm : DEFAULT_PREFS.radiusKm,
 				fuels: Array.isArray(parsed.fuels) ? parsed.fuels.filter(isFuel) : [],
 				sort: parsed.sort === 'distance' ? 'distance' : 'price',
-				favoritesOnly: parsed.favoritesOnly === true
+				favoritesFirst: parsed.favoritesFirst === true
 			};
 		}
 		// One-time migration from the legacy fuel-only filter key.
@@ -72,7 +72,7 @@ function persist(): void {
 				radiusKm: prefs.radiusKm,
 				fuels: prefs.fuels,
 				sort: prefs.sort,
-				favoritesOnly: prefs.favoritesOnly
+				favoritesFirst: prefs.favoritesFirst
 			})
 		);
 	} catch {
@@ -91,8 +91,8 @@ export function setSort(sort: SortMode): void {
 	persist();
 }
 
-export function setFavoritesOnly(value: boolean): void {
-	prefs.favoritesOnly = value;
+export function setFavoritesFirst(value: boolean): void {
+	prefs.favoritesFirst = value;
 	persist();
 }
 

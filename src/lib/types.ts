@@ -67,7 +67,7 @@ export interface Preferences {
 	/** Sort order applied to the station list. */
 	sort: SortMode;
 	/** When true, the list shows only favorite stations. */
-	favoritesOnly: boolean;
+	favoritesFirst: boolean;
 }
 
 /**

@@ -8,7 +8,7 @@
 		clearFuels,
 		setRadiusKm,
 		setSort,
-		setFavoritesOnly,
+		setFavoritesFirst,
 		toggleFuel
 	} from '$lib/state/preferences.svelte';
 
@@ -97,11 +97,11 @@
 			<button
 				class="switch-row"
 				role="switch"
-				aria-checked={prefs.favoritesOnly}
-				onclick={() => setFavoritesOnly(!prefs.favoritesOnly)}
+				aria-checked={prefs.favoritesFirst}
+				onclick={() => setFavoritesFirst(!prefs.favoritesFirst)}
 			>
-				<span class="switch-label">Mostrar solo favoritas</span>
-				<span class="switch" class:switch-on={prefs.favoritesOnly}>
+				<span class="switch-label">Favoritas primero</span>
+				<span class="switch" class:switch-on={prefs.favoritesFirst}>
 					<span class="switch-knob"></span>
 				</span>
 			</button>
