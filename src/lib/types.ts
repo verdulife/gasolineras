@@ -56,3 +56,33 @@ export const FUEL_LABELS: Record<FuelType, string> = {
 	diesel: 'Diésel',
 	diesel_premium: 'Diésel Premium'
 };
+
+export type SortMode = 'price' | 'distance';
+
+export interface Preferences {
+	/** Search radius in kilometers. */
+	radiusKm: number;
+	/** Selected fuels; empty means "all". */
+	fuels: FuelType[];
+	/** Sort order applied to the station list. */
+	sort: SortMode;
+	/** When true, the list shows only favorite stations. */
+	favoritesOnly: boolean;
+}
+
+/**
+ * Persisted snapshot of a favorite station. Keeps the card renderable
+ * even when the station is outside the current radius or offline.
+ */
+export interface StationSnapshot {
+	id: string;
+	name: string;
+	brand: string;
+	address: string;
+	municipality: string;
+	lat: number;
+	lng: number;
+	prices: FuelPrices;
+	/** Epoch ms of the last time this snapshot was refreshed. */
+	savedAt: number;
+}

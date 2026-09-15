@@ -27,8 +27,10 @@ function provinceUrl(provinceId: string): string {
 const MAX_STATIONS = 800;
 // Default page size returned to the client.
 const DEFAULT_LIMIT = 50;
-// Reference fuel used to rank "best" stations (cheap + close).
+// Reference fuel used to rank "best" stations (cheap + close) and to
+// order by price when the client asks for `sort=price`.
 const RANK_FUEL = 'gasolina95';
+const FUEL_TYPES = ['gasolina95', 'gasolina98', 'diesel', 'diesel_premium'] as const;
 // Relevance weights.
 const W_PRICE = 0.6;
 const W_DIST = 0.4;
@@ -163,6 +165,14 @@ export const GET: RequestHandler = async ({ url }) => {
 	const centerLat = parseFloat(url.searchParams.get('lat') ?? '');
 	const centerLng = parseFloat(url.searchParams.get('lng') ?? '');
 	const limit = parseInt(url.searchParams.get('limit') ?? '20', 10);
+	const safeSortParam = url.searchParams.get('sort') ?? 'relevance';
+	const sort = safeSortParam === 'distance' || safeSortParam === 'price' ? safeSortParam : 'relevance';
+	const requestedFuel = url.searchParams.get('fuel') ?? '';
+	const rankFuel = (FUEL_TYPES as readonly string[]).includes(requestedFuel)
+		? requestedFuel
+		: RANK_FUEL;
+	const withinMRaw = parseFloat(url.searchParams.get('withinM') ?? '');
+	const withinM = Number.isFinite(withinMRaw) && withinMRaw > 0 ? withinMRaw : null;
 
 	if ([swLat, swLng, neLat, neLng].some((n) => Number.isNaN(n))) {
 		return new Response(JSON.stringify({ error: 'Invalid bounds' }), { status: 400 });
@@ -178,7 +188,6 @@ export const GET: RequestHandler = async ({ url }) => {
 		.filter((s) => s.lat >= swLat && s.lat <= neLat && s.lng >= swLng && s.lng <= neLng);
 
 	const hasCenter = !Number.isNaN(centerLat) && !Number.isNaN(centerLng);
-	const sort = url.searchParams.get('sort') ?? 'relevance';
 	const safeLimit = Math.max(1, Math.min(limit, MAX_STATIONS));
 
 	// Work on shallow copies so we never mutate the shared per-province cache
@@ -188,25 +197,36 @@ export const GET: RequestHandler = async ({ url }) => {
 		distanceM: hasCenter ? Math.round(haversine(centerLat, centerLng, s.lat, s.lng)) : 0
 	}));
 
-	let ordered = candidates;
+	// Optional exact circular radius filter (the enclosing box was already applied).
+	const pool = hasCenter && withinM ? candidates.filter((s) => s.distanceM <= withinM) : candidates;
+
+	let ordered = pool;
 	if (hasCenter) {
 		if (sort === 'distance') {
-			// Pure distance ordering — used by the infinite-scroll list.
-			ordered = [...candidates].sort((a, b) => a.distanceM - b.distanceM);
+			// Pure distance ordering — used by the favorites / proximity sort.
+			ordered = [...pool].sort((a, b) => a.distanceM - b.distanceM);
+		} else if (sort === 'price') {
+			// Ascending price for the requested fuel; stations without that fuel
+			// go last, ties broken by distance.
+			const priceOf = (s: Station): number => {
+				const p = s.prices[rankFuel];
+				return typeof p === 'number' ? p : Number.POSITIVE_INFINITY;
+			};
+			ordered = [...pool].sort((a, b) => priceOf(a) - priceOf(b) || a.distanceM - b.distanceM);
 		} else {
 			// Default: order by relevance (cheap AND close).
-			const withFuel = candidates.filter((s) => typeof s.prices[RANK_FUEL] === 'number');
+			const withFuel = pool.filter((s) => typeof s.prices[rankFuel] === 'number');
 			const minPrice =
-				withFuel.length > 0 ? Math.min(...withFuel.map((s) => s.prices[RANK_FUEL] as number)) : 0;
+				withFuel.length > 0 ? Math.min(...withFuel.map((s) => s.prices[rankFuel] as number)) : 0;
 			const maxPrice =
-				withFuel.length > 0 ? Math.max(...withFuel.map((s) => s.prices[RANK_FUEL] as number)) : 0;
-			const minDist = candidates.length > 0 ? Math.min(...candidates.map((s) => s.distanceM)) : 0;
-			const maxDist = candidates.length > 0 ? Math.max(...candidates.map((s) => s.distanceM)) : 1;
+				withFuel.length > 0 ? Math.max(...withFuel.map((s) => s.prices[rankFuel] as number)) : 0;
+			const minDist = pool.length > 0 ? Math.min(...pool.map((s) => s.distanceM)) : 0;
+			const maxDist = pool.length > 0 ? Math.max(...pool.map((s) => s.distanceM)) : 1;
 			const priceSpan = maxPrice - minPrice || 1;
 			const distSpan = maxDist - minDist || 1;
 
-			const scored = candidates.map((s) => {
-				const p = s.prices[RANK_FUEL];
+			const scored = pool.map((s) => {
+				const p = s.prices[rankFuel];
 				const priceNorm = typeof p === 'number' ? (p - minPrice) / priceSpan : 1;
 				const distNorm = (s.distanceM - minDist) / distSpan;
 				return { s, score: W_PRICE * priceNorm + W_DIST * distNorm };
