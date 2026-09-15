@@ -62,18 +62,26 @@
 >
 	<div class="card-header">
 		<div class="card-title-area">
-			<div class="title-text">
-				<h3 class="station-name">{station.name}</h3>
-				<p class="station-address">
-					<MapPin class="size-3 shrink-0" />
-					<span>{place}</span>
-				</p>
-			</div>
+			<h3 class="station-name">{station.name}</h3>
+			<p class="station-address">
+				<MapPin class="size-3 shrink-0" />
+				<span>{place}</span>
+			</p>
 		</div>
-		<span class="distance">
-			<Navigation class="size-3" />
-			{formatDistance(station.distanceM)}
-		</span>
+		<div class="card-actions">
+			<button
+				class="maps-icon-btn"
+				onclick={openInMaps}
+				aria-label="Abrir en Maps"
+				title="Abrir en Maps"
+			>
+				<ExternalLink class="size-3.5" />
+			</button>
+			<span class="distance">
+				<Navigation class="size-3" />
+				{formatDistance(station.distanceM)}
+			</span>
+		</div>
 	</div>
 
 	<div class="price-row">
@@ -86,36 +94,28 @@
 			{/if}
 		{/each}
 	</div>
-
-	{#if selected}
-		<div class="extra-row">
-			<button class="maps-btn" onclick={openInMaps}>
-				<ExternalLink class="size-3" />
-				Abrir en Maps
-			</button>
-		</div>
-	{/if}
 </div>
 
 <style>
 	.station-card {
 		background: var(--card);
 		border: 1px solid var(--border);
-		border-radius: 12px;
-		padding: 0.875rem;
+		border-radius: var(--radius-card);
+		padding: var(--space-card-padding);
 		text-align: left;
 		width: 100%;
 		cursor: pointer;
-		transition: all 0.15s ease;
+		transition: all var(--duration-fast) var(--ease-standard);
 		display: flex;
 		flex-direction: column;
-		gap: 0.625rem;
+		gap: var(--space-card-gap);
 		font-family: inherit;
 		color: inherit;
 	}
 
 	.station-card:hover {
 		border-color: var(--muted-foreground);
+		box-shadow: var(--shadow-card);
 	}
 
 	.station-card.selected {
@@ -124,7 +124,7 @@
 	}
 
 	.station-card:focus-visible {
-		outline: 2px solid var(--brand);
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 	}
 
@@ -136,19 +136,12 @@
 	}
 
 	.card-title-area {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.5rem;
-		min-width: 0;
 		flex: 1;
-	}
-
-	.title-text {
 		min-width: 0;
 	}
 
 	.station-name {
-		font-size: 0.875rem;
+		font-size: 0.9375rem;
 		font-weight: 600;
 		line-height: 1.2;
 		overflow: hidden;
@@ -166,6 +159,32 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+
+	.card-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+
+	.maps-icon-btn {
+		width: 2rem;
+		height: 2rem;
+		border-radius: var(--radius-pill);
+		background: var(--muted);
+		color: var(--foreground);
+		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: filter var(--duration-fast) var(--ease-standard);
+		flex-shrink: 0;
+	}
+
+	.maps-icon-btn:hover {
+		filter: brightness(0.92);
 	}
 
 	.distance {
@@ -187,7 +206,7 @@
 
 	.price-chip {
 		background: var(--muted);
-		border-radius: 8px;
+		border-radius: calc(var(--radius) * 0.8);
 		padding: 0.375rem 0.625rem;
 		display: flex;
 		flex-direction: column;
@@ -211,30 +230,5 @@
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
 		letter-spacing: -0.02em;
-	}
-
-	.extra-row {
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	.maps-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.375rem;
-		padding: 0.375rem 0.75rem;
-		border-radius: 999px;
-		background: var(--brand);
-		color: var(--brand-foreground);
-		border: none;
-		font-size: 0.75rem;
-		font-weight: 600;
-		font-family: inherit;
-		cursor: pointer;
-		transition: all 0.15s ease;
-	}
-
-	.maps-btn:hover {
-		filter: brightness(0.95);
 	}
 </style>
